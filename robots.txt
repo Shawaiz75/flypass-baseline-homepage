@@ -1,0 +1,26 @@
+# https://flypassholidays.co.uk/robots.txt
+
+User-agent: *
+Allow: /
+
+# Major AI crawlers are allowed deliberately. The FAQ and process copy is
+# written to be quoted accurately; being cited is the point.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://flypassholidays.co.uk/sitemap.xml
+
+# Plain-text summary for AI agents: https://flypassholidays.co.uk/llms.txt
+# Informal convention, not a standard, and ignored by Google Search.

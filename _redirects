@@ -1,0 +1,7 @@
+# Static-host redirect rules (Netlify / Cloudflare Pages format).
+# Ignored by hosts that do not read this file — the meta-refresh stub at
+# /country/france/ remains as the portable fallback. Equivalents:
+#   nginx   : location = /country/france { return 301 /france-schengen-visa; }
+#   Apache  : Redirect 301 /country/france /france-schengen-visa
+/country/france   /france-schengen-visa   301
+/country/france/  /france-schengen-visa   301
