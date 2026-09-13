@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17835680281"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17835680281');
+gtag('config', 'G-M2K7XD4KXD');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How We Work, Step by Step | Flypass Holidays</title>
 <meta name="description" content="Every stage of a Flypass case, in order: assessment, appointment, building the file, the audit, appointment day, and getting your passport back.">
@@ -32,7 +41,7 @@
 <style>
 /* Onest, self-hosted. Two reasons it came off Google Fonts: the stylesheet was
    render-blocking on a third-party origin, and the swap from the fallback face
-   measured as the single cause of ALL remaining layout shift — blocking
+   measured as the single cause of ALL remaining layout shift: blocking
    fonts.gstatic.com took CLS from 0.28 to 0.00 on every page.
 
    font-display:optional means the browser uses the face only if it is ready
@@ -59,7 +68,7 @@
 .fl-statutory strong{font-weight:500;color:var(--ink)}
 .fl-statutory a{border-bottom:1px solid var(--ghost);transition:color .25s,border-color .25s}
 .fl-statutory a:hover{color:var(--brand);border-bottom-color:var(--brand)}
-/* The two halves are a legal disclosure and an independence statement — related,
+/* The two halves are a legal disclosure and an independence statement, related,
    but not one sentence. On a wide viewport they sit on one line separated by a
    rule; below that the second half drops to its own line. */
 .fl-sep{display:none}
@@ -68,7 +77,7 @@
 
 /* ---------- Key facts panel ----------
    Answer-first summary. Every row is a question someone actually types, with
-   the answer in the first clause — the format both a hurried reader and an
+   the answer in the first clause: the format both a hurried reader and an
    answer engine can lift without needing the paragraph around it. */
 .facts{background:var(--surface);border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3rem 1.25rem}
 @media (min-width:640px){.facts{padding:4.5rem 3rem}}
@@ -91,6 +100,31 @@
 .enq-error{margin-top:.8rem;font-size:.72rem;line-height:1.6;color:#ffb3ac}
 .enq-error a{text-decoration:underline}
 .modal-note.enq-error{color:var(--brand)}
+
+/* ---------- "What we do not do" — centered, plain background ---------- */
+.notdo-center{text-align:center}
+.notdo-center .h2{margin-left:auto;margin-right:auto}
+.notdo-center .advlede-col{margin:1.5rem auto 0}
+
+/* ---------- Reviews: gray section, so cards need to be lighter than it
+   to stay visible instead of blending into the same gray. !important
+   because inner.css's own #reviews rule (var(--background), white) loads
+   after this block and ties on specificity, so it would otherwise win on
+   source order alone. */
+#reviews{background:var(--surface) !important}
+#reviews .t-card{background:var(--surface-card)}
+
+/* ---------- Stage six: homepage-style pinned process section ----------
+   base.css's height:220vh is desktop-only (min-width:1024px) — .process-wrap
+   has no explicit height below that, so .process-sticky (also desktop-only)
+   just sits in normal flow on mobile. This override must stay inside the
+   same media query, or it would force 300vh of dead scroll space on mobile
+   too. It's tuned for the homepage's 2 sliding cards (3 cards total); this
+   stage has 3 sliding cards (4 total), so it needs more scroll room for the
+   same per-card pacing. #process-wrap (an ID selector) outranks the shared
+   .process-wrap class regardless of stylesheet order, so no !important
+   is needed. */
+@media (min-width:1024px){#process-wrap{height:300vh}}
 
 </style>
 
@@ -197,6 +231,14 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Are you a government or official visa service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do I have to come to your office?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -216,7 +258,7 @@
           "name": "When do I pay?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "After terms are agreed in writing, and never before. Our fee starts from £125 and covers preparation and advice. The official visa fee and the application centre's service charge are separate, and you pay those directly at your appointment."
+            "text": "After terms are agreed in writing, and never before. Our fee starts from £95 and covers preparation and advice. The official visa fee and the application centre's service charge are separate, and you pay those directly at your appointment."
           }
         },
         {
@@ -300,25 +342,13 @@
 </defs>
 </svg>
 
-<!-- Intro loader -->
-<div id="loader" aria-hidden="true">
-  <div class="lw"><svg class="logo ondark" viewBox="0 0 336 75" aria-hidden="true"><use href="#fp-logo"/></svg></div>
-  <div class="track"><div class="fill"></div></div>
-</div>
-<noscript><style>#loader{display:none}</style></noscript>
-<script>
-/* Failsafe: never trap the page behind the loader if the module script dies */
-setTimeout(function(){var l=document.getElementById('loader');
-if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentElement.classList.remove('lock');}},6500);
-</script>
-
 <div class="page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ TOP BAR ============ -->
 <header class="top-bar">
-  <a class="tb-brand" href="/" aria-label="Flypass Holidays — home">
+  <a class="tb-brand" href="/" aria-label="Flypass Holidays home page">
     <svg class="logo" viewBox="0 0 336 75" role="img" aria-label="Flypass Holidays"><use href="#fp-logo"/></svg>
   </a>
   <nav class="tb-nav" aria-label="Primary">
@@ -333,19 +363,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <a href="/schengen-visa-processing-time">Processing Time</a>
       </div>
     </div>
-    <div class="nav-item">
-      <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Our Services
-        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="drop-panel" role="menu" aria-label="Our services">
-        <a href="/schengen-tourist-visa">Tourist Visa</a>
-        <a href="/schengen-business-visa">Business Visa</a>
-        <a href="/schengen-conference-visa">Business Conference Visa</a>
-        <a href="/schengen-medical-visa">Medical Treatment Visa</a>
-        <a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a>
-        <a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a>
-      </div>
-    </div>
+    <a href="/#services">Our Services</a>
     <div class="nav-item has-mega">
       <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Destinations
         <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -353,7 +371,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <div class="mega-panel" role="menu" aria-label="Destinations">
         <div class="mega-head">
           <p class="mega-title">All 29 Schengen countries</p>
-          <p class="mega-note">One visa covers them all &mdash; your application goes to the consulate of your main destination.</p>
+          <p class="mega-note">One visa covers them all: your application goes to the consulate of your main destination.</p>
         </div>
         <div class="mega-grid">
           <a href="/country"><span class="fl">&#127462;&#127481;</span>Austria</a>
@@ -365,11 +383,11 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <a href="/country"><span class="fl">&#127466;&#127466;</span>Estonia</a>
           <a href="/country"><span class="fl">&#127467;&#127470;</span>Finland</a>
           <a href="/france-schengen-visa"><span class="fl">&#127467;&#127479;</span>France</a>
-          <a href="/germany-visa-uk"><span class="fl">&#127465;&#127466;</span>Germany</a>
+          <a href="/country"><span class="fl">&#127465;&#127466;</span>Germany</a>
           <a href="/greece-visa-uk"><span class="fl">&#127468;&#127479;</span>Greece</a>
           <a href="/country"><span class="fl">&#127469;&#127482;</span>Hungary</a>
           <a href="/country"><span class="fl">&#127470;&#127480;</span>Iceland</a>
-          <a href="/italy-visa-uk"><span class="fl">&#127470;&#127481;</span>Italy</a>
+          <a href="/country"><span class="fl">&#127470;&#127481;</span>Italy</a>
           <a href="/country"><span class="fl">&#127473;&#127483;</span>Latvia</a>
           <a href="/country"><span class="fl">&#127473;&#127470;</span>Liechtenstein</a>
           <a href="/country"><span class="fl">&#127473;&#127481;</span>Lithuania</a>
@@ -393,7 +411,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <a href="/journal">Journal</a>
   </nav>
   <div class="tb-right">
-    <a class="pill solid sm tb-cta" href="/contact">Contact Us</a>
+    <a class="pill solid sm tb-cta" href="/contact">Request a consultation</a>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"><span></span><span></span></span>
     </button>
@@ -403,7 +421,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <main id="main">
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="top" aria-label="Flypass Holidays — how we work">
+<section class="hero" id="top" aria-label="Flypass Holidays: how we work">
   <div class="hero-plate" aria-hidden="true">
     <div class="hero-plate-inner" id="hero-plate">
       <img src="/assets/france-file-prep.webp" alt="" fetchpriority="high" width="1600" height="1195">
@@ -420,7 +438,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <p class="hero-sub" id="hero-sub"><span class="ln"><span class="li">From your first message to your passport coming back, here is every stage of a Flypass case, in the order it happens, including the parts most people are nervous about.</span></span></p>
       <div class="hero-wa" id="hero-wa">
         <button class="pill light" type="button" data-focus-form>
-          Start your case
+          Speak to a consultant
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
         <a class="pill ghost" href="https://wa.me/447482788545" target="_blank" rel="noopener">
@@ -466,53 +484,50 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.999 14.171c-2.13 0-3.87-1.73-3.87-3.87s1.74-3.86 3.87-3.86 3.87 1.73 3.87 3.87-1.74 3.86-3.87 3.86Zm0-6.23c-1.3 0-2.37 1.06-2.37 2.37s1.06 2.37 2.37 2.37 2.37-1.06 2.37-2.37-1.07-2.37-2.37-2.37Z" fill="currentColor"/><path d="M12.002 22.76a5.97 5.97 0 0 1-4.13-1.67c-2.95-2.84-6.21-7.37-4.98-12.76 1.11-4.89 5.38-7.08 9.11-7.08h.01c3.73 0 8 2.19 9.11 7.09 1.22 5.39-2.04 9.91-4.99 12.75a5.97 5.97 0 0 1-4.13 1.67Zm0-20.01c-2.91 0-6.65 1.55-7.64 5.91-1.08 4.71 1.88 8.77 4.56 11.34a4.425 4.425 0 0 0 6.17 0c2.67-2.57 5.63-6.63 4.57-11.34-1-4.36-4.75-5.91-7.66-5.91Z" fill="currentColor"/></svg></span>
 <p><strong>We tell you whether you need us.</strong> If your case is straightforward and you have time in hand, we say so. Plenty of people apply successfully alone. If your case has something in it that a consulate will look at twice, we say that instead, and explain <a href="/advisory">what is included</a>.</p></div>
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.89 18.222H6.1c-.52 0-1.01-.05-1.45-.15a3.74 3.74 0 0 1-.8-.22c-1.33-.5-2.9-1.73-2.9-4.79v-5.15c0-3.27 1.88-5.15 5.15-5.15h8.79c2.76 0 4.54 1.32 5.02 3.72.09.44.13.91.13 1.43v5.15c0 3.29-1.87 5.16-5.15 5.16ZM6.11 4.282c-2.46 0-3.65 1.19-3.65 3.65v5.15c0 1.79.63 2.89 1.92 3.38.2.07.39.12.57.15.38.08.75.12 1.16.12h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-.42-.03-.79-.1-1.13-.34-1.7-1.5-2.52-3.55-2.52H6.11Z" fill="currentColor"/><path d="M17.891 21.22h-8.79c-.85 0-1.61-.12-2.26-.37-1.47-.55-2.43-1.71-2.76-3.37a.74.74 0 0 1 .21-.68.73.73 0 0 1 .69-.19c.33.07.7.11 1.12.11h8.79c2.46 0 3.65-1.19 3.65-3.65V7.92c0-.42-.03-.79-.1-1.13-.05-.25.03-.5.2-.68.18-.18.43-.26.68-.2 2.4.49 3.72 2.27 3.72 5.01v5.15c0 3.28-1.87 5.15-5.15 5.15Zm-11.97-3c.32.58.8.99 1.46 1.23.48.18 1.06.27 1.73.27h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-1.58-.49-2.63-1.5-3.18v5.33c0 3.27-1.88 5.15-5.15 5.15H5.921Z" fill="currentColor"/><path d="M10.5 13.89c-1.87 0-3.39-1.52-3.39-3.39s1.52-3.39 3.39-3.39 3.39 1.52 3.39 3.39-1.52 3.39-3.39 3.39Zm0-5.28c-1.04 0-1.89.85-1.89 1.89s.85 1.89 1.89 1.89 1.89-.85 1.89-1.89-.85-1.89-1.89-1.89ZM4.781 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75ZM16.21 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75Z" fill="currentColor"/></svg></span>
-<p><strong>Nothing is charged at this stage.</strong> No fee is taken and no work begins until terms are agreed with you in writing. Our fee starts from £125.</p></div>
+<p><strong>Nothing is charged at this stage.</strong> No fee is taken and no work begins until terms are agreed with you in writing. Our fee starts from £95.</p></div>
 </div>
 </div>
 </section>
 
 <section class="sec card" id="stage1" aria-labelledby="stage1-title">
-<div class="advwrap">
+<div class="advmedia">
+<figure class="advmedia-img">
+<img src="/assets/who-team.webp" alt="A Flypass adviser assessing a client's Schengen case before any paperwork begins" width="1000" height="1506" loading="lazy">
+</figure>
+<div class="advmedia-content">
 <p class="eyebrow"><i></i>Stage one</p>
 <h2 class="h2" id="stage1-title">
       <span class="ln"><span class="li">The</span></span>
       <span class="ln"><span class="li">assessment</span></span>
     </h2>
-<div class="advlede-col">
 <p class="body">Before any paperwork, we settle three things.</p>
-</div>
-<div class="advcards advcards--3">
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.999 14.171c-2.13 0-3.87-1.73-3.87-3.87s1.74-3.86 3.87-3.86 3.87 1.73 3.87 3.87-1.74 3.86-3.87 3.86Zm0-6.23c-1.3 0-2.37 1.06-2.37 2.37s1.06 2.37 2.37 2.37 2.37-1.06 2.37-2.37-1.07-2.37-2.37-2.37Z" fill="currentColor"/><path d="M12.002 22.76a5.97 5.97 0 0 1-4.13-1.67c-2.95-2.84-6.21-7.37-4.98-12.76 1.11-4.89 5.38-7.08 9.11-7.08h.01c3.73 0 8 2.19 9.11 7.09 1.22 5.39-2.04 9.91-4.99 12.75a5.97 5.97 0 0 1-4.13 1.67Zm0-20.01c-2.91 0-6.65 1.55-7.64 5.91-1.08 4.71 1.88 8.77 4.56 11.34a4.425 4.425 0 0 0 6.17 0c2.67-2.57 5.63-6.63 4.57-11.34-1-4.36-4.75-5.91-7.66-5.91Z" fill="currentColor"/></svg></span>
-<h3>Which consulate must receive your application.</h3>
-<p>This is decided by <a href="/country">your main destination</a>, meaning the country where you will spend the most nights, not the country you fly into first. If your nights are split equally, it falls to your first point of entry. Getting this wrong is one of the most common avoidable reasons a file fails.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21.75H7c-4.41 0-5.75-1.34-5.75-5.75V8c0-4.41 1.34-5.75 5.75-5.75h10c4.41 0 5.75 1.34 5.75 5.75v8c0 4.41-1.34 5.75-5.75 5.75Zm-10-18c-3.58 0-4.25.68-4.25 4.25v8c0 3.57.67 4.25 4.25 4.25h10c3.58 0 4.25-.68 4.25-4.25V8c0-3.57-.67-4.25-4.25-4.25H7Z" fill="currentColor"/><path d="M19 8.75h-5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h5c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 12.75h-4c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 16.75h-2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h2c.41 0 .75.34.75.75s-.34.75-.75.75ZM8.5 12.042c-1.41 0-2.56-1.15-2.56-2.56 0-1.41 1.15-2.56 2.56-2.56 1.41 0 2.56 1.15 2.56 2.56 0 1.41-1.15 2.56-2.56 2.56Zm0-3.62c-.58 0-1.06.48-1.06 1.06 0 .58.48 1.06 1.06 1.06.58 0 1.06-.48 1.06-1.06 0-.58-.48-1.06-1.06-1.06ZM12 17.082c-.38 0-.71-.29-.75-.68a2.301 2.301 0 0 0-2.07-2.05 7.95 7.95 0 0 0-1.38 0c-1.09.1-1.96.96-2.07 2.05-.04.41-.41.72-.82.67a.75.75 0 0 1-.67-.82c.18-1.8 1.61-3.23 3.42-3.39.55-.05 1.11-.05 1.66 0 1.8.17 3.24 1.6 3.42 3.39a.75.75 0 0 1-.67.82c-.02.01-.05.01-.07.01Z" fill="currentColor"/></svg></span>
-<h3>What your status raises.</h3>
-<p>A student, a skilled worker and an indefinite leave to remain holder present differently, because the questions a consulate quietly asks about each are different. We work out which questions yours invites.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.89 18.222H6.1c-.52 0-1.01-.05-1.45-.15a3.74 3.74 0 0 1-.8-.22c-1.33-.5-2.9-1.73-2.9-4.79v-5.15c0-3.27 1.88-5.15 5.15-5.15h8.79c2.76 0 4.54 1.32 5.02 3.72.09.44.13.91.13 1.43v5.15c0 3.29-1.87 5.16-5.15 5.16ZM6.11 4.282c-2.46 0-3.65 1.19-3.65 3.65v5.15c0 1.79.63 2.89 1.92 3.38.2.07.39.12.57.15.38.08.75.12 1.16.12h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-.42-.03-.79-.1-1.13-.34-1.7-1.5-2.52-3.55-2.52H6.11Z" fill="currentColor"/><path d="M17.891 21.22h-8.79c-.85 0-1.61-.12-2.26-.37-1.47-.55-2.43-1.71-2.76-3.37a.74.74 0 0 1 .21-.68.73.73 0 0 1 .69-.19c.33.07.7.11 1.12.11h8.79c2.46 0 3.65-1.19 3.65-3.65V7.92c0-.42-.03-.79-.1-1.13-.05-.25.03-.5.2-.68.18-.18.43-.26.68-.2 2.4.49 3.72 2.27 3.72 5.01v5.15c0 3.28-1.87 5.15-5.15 5.15Zm-11.97-3c.32.58.8.99 1.46 1.23.48.18 1.06.27 1.73.27h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-1.58-.49-2.63-1.5-3.18v5.33c0 3.27-1.88 5.15-5.15 5.15H5.921Z" fill="currentColor"/><path d="M10.5 13.89c-1.87 0-3.39-1.52-3.39-3.39s1.52-3.39 3.39-3.39 3.39 1.52 3.39 3.39-1.52 3.39-3.39 3.39Zm0-5.28c-1.04 0-1.89.85-1.89 1.89s.85 1.89 1.89 1.89 1.89-.85 1.89-1.89-.85-1.89-1.89-1.89ZM4.781 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75ZM16.21 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75Z" fill="currentColor"/></svg></span>
-<h3>Whether the timing works at all.</h3>
-<p>If your travel date does not leave enough room, you will hear that now rather than after you have paid. We set out <a href="/schengen-visa-processing-time">how long each stage takes</a> separately.</p></div>
+<ul class="blist">
+<li><strong>Which consulate must receive your application.</strong> This is decided by <a href="/country">your main destination</a>, meaning the country where you will spend the most nights, not the country you fly into first. If your nights are split equally, it falls to your first point of entry. Getting this wrong is one of the most common avoidable reasons a file fails.</li>
+<li><strong>What your status raises.</strong> A student, a skilled worker and an indefinite leave to remain holder present differently, because the questions a consulate quietly asks about each are different. We work out which questions yours invites.</li>
+<li><strong>Whether the timing works at all.</strong> If your travel date does not leave enough room, you will hear that now rather than after you have paid. We set out <a href="/schengen-visa-processing-time">how long each stage takes</a> separately.</li>
+</ul>
 </div>
 </div>
 </section>
 
 <section class="sec" id="stage2" aria-labelledby="stage2-title">
-<div class="advwrap">
+<div class="advmedia">
+<div class="advmedia-content">
 <p class="eyebrow"><i></i>Stage two</p>
 <h2 class="h2" id="stage2-title">
       <span class="ln"><span class="li">Your</span></span>
       <span class="ln"><span class="li">appointment</span></span>
     </h2>
-<div class="advlede-col">
 <p class="body">The appointment is the constraint everything else depends on, so it is dealt with before the paperwork rather than after it.</p>
+<ul class="blist">
+<li><strong>We identify the correct centre.</strong> Schengen applications in the UK are handled through visa application centres operated by VFS Global, TLScontact, BLS International or Global Visa Center World, depending on your destination country. Each one runs its own booking or registration process, and they are not the same as each other.</li>
+<li><strong>We tell you exactly what that centre's process asks of you</strong>, and make sure your file is ready to move the moment a date is available rather than scrambling once it appears.</li>
+<li><strong>Once the date is fixed, everything else is built backwards from it.</strong></li>
+</ul>
 </div>
-<div class="advcards advcards--3">
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.75c-.41 0-.75-.34-.75-.75V2c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75ZM16 5.75c-.41 0-.75-.34-.75-.75V2c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75ZM8.5 14.498c-.13 0-.26-.03-.38-.08-.13-.05-.23-.12-.33-.21-.18-.19-.29-.44-.29-.71 0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.2-.16.33-.21.36-.15.81-.07 1.09.21.18.19.29.45.29.71 0 .06-.01.13-.02.2-.01.06-.03.12-.06.18-.02.06-.05.12-.09.18-.03.05-.08.1-.12.15-.19.18-.45.29-.71.29ZM12 14.499c-.13 0-.26-.03-.38-.08-.13-.05-.23-.12-.33-.21-.18-.19-.29-.44-.29-.71 0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.2-.16.33-.21.36-.16.81-.07 1.09.21.18.19.29.45.29.71 0 .06-.01.13-.02.2-.01.06-.03.12-.06.18-.02.06-.05.12-.09.18-.03.05-.08.1-.12.15-.19.18-.45.29-.71.29ZM15.5 14.499c-.13 0-.26-.03-.38-.08-.13-.05-.23-.12-.33-.21l-.12-.15a.757.757 0 0 1-.09-.18.636.636 0 0 1-.06-.18c-.01-.07-.02-.14-.02-.2 0-.26.11-.52.29-.71.1-.09.2-.16.33-.21.37-.16.81-.07 1.09.21.18.19.29.45.29.71 0 .06-.01.13-.02.2-.01.06-.03.12-.06.18-.02.06-.05.12-.09.18-.03.05-.08.1-.12.15-.19.18-.45.29-.71.29ZM8.5 18c-.13 0-.26-.03-.38-.08s-.23-.12-.33-.21c-.18-.19-.29-.45-.29-.71 0-.13.03-.26.08-.38.05-.13.12-.24.21-.33.37-.37 1.05-.37 1.42 0 .18.19.29.45.29.71 0 .26-.11.52-.29.71-.19.18-.45.29-.71.29ZM12 18c-.26 0-.52-.11-.71-.29-.18-.19-.29-.45-.29-.71 0-.13.03-.26.08-.38.05-.13.12-.24.21-.33.37-.37 1.05-.37 1.42 0 .09.09.16.2.21.33.05.12.08.25.08.38 0 .26-.11.52-.29.71-.19.18-.45.29-.71.29ZM15.5 18c-.26 0-.52-.11-.71-.29a.933.933 0 0 1-.21-.33.995.995 0 0 1-.08-.38c0-.13.03-.26.08-.38.05-.13.12-.24.21-.33.23-.23.58-.34.9-.27.07.01.13.03.19.06.06.02.12.05.18.09.05.03.1.08.15.12.18.19.29.45.29.71 0 .26-.11.52-.29.71-.19.18-.45.29-.71.29ZM20.5 9.84h-17c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h17c.41 0 .75.34.75.75s-.34.75-.75.75Z" fill="currentColor"/><path d="M16 22.75H8c-3.65 0-5.75-2.1-5.75-5.75V8.5c0-3.65 2.1-5.75 5.75-5.75h8c3.65 0 5.75 2.1 5.75 5.75V17c0 3.65-2.1 5.75-5.75 5.75ZM8 4.25c-2.86 0-4.25 1.39-4.25 4.25V17c0 2.86 1.39 4.25 4.25 4.25h8c2.86 0 4.25-1.39 4.25-4.25V8.5c0-2.86-1.39-4.25-4.25-4.25H8Z" fill="currentColor"/></svg></span>
-<p><strong>We identify the correct centre.</strong> Schengen applications in the UK are handled through visa application centres operated by VFS Global, TLScontact, BLS International or Global Visa Center World, depending on your destination country. Each one runs its own booking or registration process, and they are not the same as each other.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 20.75c-5.38 0-9.75-4.37-9.75-9.75S5.62 1.25 11 1.25c.41 0 .75.34.75.75s-.34.75-.75.75c-4.55 0-8.25 3.7-8.25 8.25s3.7 8.25 8.25 8.25 8.25-3.7 8.25-8.25c0-.41.34-.75.75-.75s.75.34.75.75c0 5.38-4.37 9.75-9.75 9.75Z" fill="currentColor"/><path d="M20 5.75h-6c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h6c.41 0 .75.34.75.75s-.34.75-.75.75ZM17 8.75h-3c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h3c.41 0 .75.34.75.75s-.34.75-.75.75ZM20.161 22.79c-.08 0-.16-.01-.23-.02-.47-.06-1.32-.38-1.8-1.81-.25-.75-.16-1.5.25-2.07.41-.57 1.1-.89 1.89-.89 1.02 0 1.82.39 2.18 1.08.36.69.26 1.57-.31 2.42-.71 1.07-1.48 1.29-1.98 1.29Zm-.6-2.3c.17.52.41.78.57.8.16.02.46-.17.77-.62.29-.43.31-.74.24-.88s-.35-.29-.87-.29c-.31 0-.54.1-.67.27-.12.17-.14.43-.04.72Z" fill="currentColor"/></svg></span>
-<p><strong>We tell you exactly what that centre's process asks of you</strong>, and make sure your file is ready to move the moment a date is available rather than scrambling once it appears.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M10.58 15.582a.75.75 0 0 1-.53-.22l-2.83-2.83a.754.754 0 0 1 0-1.06c.29-.29.77-.29 1.06 0l2.3 2.3 5.14-5.14c.29-.29.77-.29 1.06 0 .29.29.29.77 0 1.06l-5.67 5.67a.75.75 0 0 1-.53.22Z" fill="currentColor"/></svg></span>
-<p><strong>Once the date is fixed, everything else is built backwards from it.</strong></p></div>
-</div>
+<figure class="advmedia-img">
+<img src="/assets/france-appointment.webp" alt="Booking a Schengen visa appointment at a UK application centre" width="800" height="1205" loading="lazy">
+</figure>
 </div>
 </section>
 
@@ -539,15 +554,16 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </section>
 
 <section class="sec" id="stage4" aria-labelledby="stage4-title">
-<div class="advsplit">
-<div>
+<div class="advmedia">
+<figure class="advmedia-img">
+<img src="/assets/why-file.webp" alt="Every document in a Schengen visa file being read line by line before submission" width="800" height="1205" loading="lazy">
+</figure>
+<div class="advmedia-content">
 <p class="eyebrow"><i></i>Stage four</p>
 <h2 class="h2" id="stage4-title">
       <span class="ln"><span class="li">The</span></span>
       <span class="ln"><span class="li">audit</span></span>
     </h2>
-</div>
-<div class="advsplit-body">
 <p class="body">Every document you will carry is read line by line against the rest of the file before you go anywhere.</p>
 <p class="body">We are checking that the file agrees with itself. That the dates on the itinerary match the accommodation bookings. That the financial evidence supports the trip described. That nothing contradicts anything else.</p>
 <p class="body">The audit happens before submission, never after. Catching a problem here costs an afternoon.</p>
@@ -556,15 +572,13 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </section>
 
 <section class="sec card" id="stage5" aria-labelledby="stage5-title">
-<div class="advsplit">
-<div>
+<div class="advmedia">
+<div class="advmedia-content">
 <p class="eyebrow"><i></i>Stage five</p>
 <h2 class="h2" id="stage5-title">
       <span class="ln"><span class="li">Appointment</span></span>
       <span class="ln"><span class="li">day</span></span>
     </h2>
-</div>
-<div class="advsplit-body">
 <p class="body">This is the part people ask about most, so here is what actually happens.</p>
 <ul class="blist">
       <li><strong>You attend in person.</strong> We cannot attend for you, and nobody can. Biometrics have to be given by you.</li>
@@ -576,42 +590,80 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <li><strong>You may not need biometrics at all</strong> if you have given them for a Schengen visa recently enough. We check this before your appointment.</li>
     </ul>
 </div>
+<figure class="advmedia-img">
+<img src="/assets/france-visa-appointment-uk-hero.webp" alt="Arriving at a Schengen visa application centre in the UK on appointment day" width="1376" height="768" loading="lazy">
+</figure>
 </div>
 </section>
 
-<section class="sec" id="stage6" aria-labelledby="stage6-title">
-<div class="advwrap">
-<p class="eyebrow"><i></i>Stage six</p>
+<section class="process" id="stage6" aria-labelledby="stage6-title">
+<div class="process-wrap" id="process-wrap">
+<div class="process-sticky">
+<div class="process-bg" aria-hidden="true">
+<img src="/assets/process-bg.webp" alt="" loading="lazy" width="1600" height="905">
+<div class="process-shade"></div>
+</div>
+<div class="process-head">
+<p class="eyebrow light"><i></i>Stage six</p>
 <h2 class="h2" id="stage6-title">
       <span class="ln"><span class="li">After</span></span>
       <span class="ln"><span class="li">submission</span></span>
     </h2>
-<div class="advlede-col">
-<p class="body">Your file goes from the visa application centre to the consulate, which makes the decision. We do not, and no agency does.</p>
+<p class="process-sub">Your file goes from the visa application centre to the consulate, which makes the decision. We do not, and no agency does.</p>
 </div>
-<div class="advcards advcards--4">
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21.75H7c-4.41 0-5.75-1.34-5.75-5.75V8c0-4.41 1.34-5.75 5.75-5.75h10c4.41 0 5.75 1.34 5.75 5.75v8c0 4.41-1.34 5.75-5.75 5.75Zm-10-18c-3.58 0-4.25.68-4.25 4.25v8c0 3.57.67 4.25 4.25 4.25h10c3.58 0 4.25-.68 4.25-4.25V8c0-3.57-.67-4.25-4.25-4.25H7Z" fill="currentColor"/><path d="M19 8.75h-5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h5c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 12.75h-4c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 16.75h-2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h2c.41 0 .75.34.75.75s-.34.75-.75.75ZM8.5 12.042c-1.41 0-2.56-1.15-2.56-2.56 0-1.41 1.15-2.56 2.56-2.56 1.41 0 2.56 1.15 2.56 2.56 0 1.41-1.15 2.56-2.56 2.56Zm0-3.62c-.58 0-1.06.48-1.06 1.06 0 .58.48 1.06 1.06 1.06.58 0 1.06-.48 1.06-1.06 0-.58-.48-1.06-1.06-1.06ZM12 17.082c-.38 0-.71-.29-.75-.68a2.301 2.301 0 0 0-2.07-2.05 7.95 7.95 0 0 0-1.38 0c-1.09.1-1.96.96-2.07 2.05-.04.41-.41.72-.82.67a.75.75 0 0 1-.67-.82c.18-1.8 1.61-3.23 3.42-3.39.55-.05 1.11-.05 1.66 0 1.8.17 3.24 1.6 3.42 3.39a.75.75 0 0 1-.67.82c-.02.01-.05.01-.07.01Z" fill="currentColor"/></svg></span>
-<p><strong>You will be able to track it.</strong> The centre gives you a reference and its own tracking, and it contacts you when your passport is ready.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M10.58 15.582a.75.75 0 0 1-.53-.22l-2.83-2.83a.754.754 0 0 1 0-1.06c.29-.29.77-.29 1.06 0l2.3 2.3 5.14-5.14c.29-.29.77-.29 1.06 0 .29.29.29.77 0 1.06l-5.67 5.67a.75.75 0 0 1-.53.22Z" fill="currentColor"/></svg></span>
-<p><strong>Your passport comes back to you</strong> either by collection or by courier, depending on the centre and what you chose when you applied.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M12 13.75c-.41 0-.75-.34-.75-.75V8c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75ZM12 16.999c-.13 0-.26-.03-.38-.08s-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33a.995.995 0 0 1-.08-.38c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08Z" fill="currentColor"/></svg></span>
-<p><strong>If anything is queried</strong>, tell us. We will help you understand what has been asked and what a sensible response looks like.</p></div>
-<div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.582 22.55c-.22 0-.45-.04-.66-.13-.47-.2-.83-.59-.99-1.08l-.44-1.32c-.2-.6-.02-1.35.42-1.8l2.27-2.28c.03-.03.07-.14.07-.19v-2.47l-4.56 1.97c-.61.26-1.23.23-1.7-.08s-.75-.87-.75-1.52v-1.29c0-.98.7-2.03 1.59-2.38l5.41-2.34V4.8c0-1.21.85-2.6 1.93-3.16a1.8 1.8 0 0 1 1.63 0c1.09.56 1.94 1.94 1.94 3.15v2.84l5.44 2.34c.89.38 1.57 1.4 1.57 2.39v1.29c0 .66-.27 1.21-.75 1.52-.48.31-1.09.34-1.7.09l-4.56-1.97v2.47c0 .04.04.14.07.17l2.28 2.29c.44.44.62 1.21.42 1.8l-.44 1.32c-.17.49-.53.88-1.01 1.07-.47.19-.99.17-1.44-.05-.05-.03-.1-.06-.15-.1l-2.33-1.96c-.08-.07-.24-.06-.31 0l-2.33 1.96a.42.42 0 0 1-.14.09c-.24.14-.51.2-.78.2Zm.98-10.91c.23 0 .45.06.64.19.35.23.55.62.55 1.08v2.85c0 .43-.21.94-.51 1.24l-2.27 2.28c-.04.05-.08.2-.06.26l.44 1.33c.03.1.1.14.14.16.03.01.08.03.14.01l2.24-1.89c.63-.54 1.62-.54 2.25 0l2.23 1.88c.07.01.12 0 .15-.01.04-.02.12-.06.15-.16l.44-1.32a.376.376 0 0 0-.06-.26L13.762 17c-.3-.28-.52-.8-.52-1.24v-2.85c0-.45.19-.84.53-1.07.34-.23.78-.26 1.2-.08l4.92 2.12c.15.06.25.06.28.04.03-.02.07-.11.07-.27v-1.29c0-.38-.32-.87-.66-1.01l-5.58-2.41c-.44-.19-.75-.67-.75-1.15v-3c0-.66-.52-1.51-1.12-1.81a.319.319 0 0 0-.27 0c-.58.3-1.11 1.17-1.11 1.82v3c0 .47-.31.96-.75 1.15l-5.58 2.41c-.35.14-.67.63-.67 1v1.29c0 .16.04.25.07.27.03.02.13.02.28-.04l4.91-2.12c.18-.08.37-.12.55-.12Z" fill="currentColor"/></svg></span>
-<p><strong>When it arrives, check the sticker before you travel.</strong> Look at the dates, the number of entries and the duration of stay. Errors are rare but they happen, and they are far easier to correct before you are at an airport.</p></div>
+<div class="steps steps--4">
+<article class="step-card">
+<div class="step-top">
+<span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21.75H7c-4.41 0-5.75-1.34-5.75-5.75V8c0-4.41 1.34-5.75 5.75-5.75h10c4.41 0 5.75 1.34 5.75 5.75v8c0 4.41-1.34 5.75-5.75 5.75Zm-10-18c-3.58 0-4.25.68-4.25 4.25v8c0 3.57.67 4.25 4.25 4.25h10c3.58 0 4.25-.68 4.25-4.25V8c0-3.57-.67-4.25-4.25-4.25H7Z" fill="currentColor"/><path d="M19 8.75h-5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h5c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 12.75h-4c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75ZM19 16.75h-2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h2c.41 0 .75.34.75.75s-.34.75-.75.75ZM8.5 12.042c-1.41 0-2.56-1.15-2.56-2.56 0-1.41 1.15-2.56 2.56-2.56 1.41 0 2.56 1.15 2.56 2.56 0 1.41-1.15 2.56-2.56 2.56Zm0-3.62c-.58 0-1.06.48-1.06 1.06 0 .58.48 1.06 1.06 1.06.58 0 1.06-.48 1.06-1.06 0-.58-.48-1.06-1.06-1.06ZM12 17.082c-.38 0-.71-.29-.75-.68a2.301 2.301 0 0 0-2.07-2.05 7.95 7.95 0 0 0-1.38 0c-1.09.1-1.96.96-2.07 2.05-.04.41-.41.72-.82.67a.75.75 0 0 1-.67-.82c.18-1.8 1.61-3.23 3.42-3.39.55-.05 1.11-.05 1.66 0 1.8.17 3.24 1.6 3.42 3.39a.75.75 0 0 1-.67.82c-.02.01-.05.01-.07.01Z" fill="currentColor"/></svg></span>
+<span class="step-num" aria-hidden="true">01</span>
+</div>
+<h3>You will be able to track it.</h3>
+<p>The centre gives you a reference and its own tracking, and it contacts you when your passport is ready.</p>
+</article>
+<article class="step-card">
+<div class="step-top">
+<span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M10.58 15.582a.75.75 0 0 1-.53-.22l-2.83-2.83a.754.754 0 0 1 0-1.06c.29-.29.77-.29 1.06 0l2.3 2.3 5.14-5.14c.29-.29.77-.29 1.06 0 .29.29.29.77 0 1.06l-5.67 5.67a.75.75 0 0 1-.53.22Z" fill="currentColor"/></svg></span>
+<span class="step-num" aria-hidden="true">02</span>
+</div>
+<h3>Your passport comes back to you.</h3>
+<p>Either by collection or by courier, depending on the centre and what you chose when you applied.</p>
+</article>
+<article class="step-card">
+<div class="step-top">
+<span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M12 13.75c-.41 0-.75-.34-.75-.75V8c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75ZM12 16.999c-.13 0-.26-.03-.38-.08s-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33a.995.995 0 0 1-.08-.38c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08Z" fill="currentColor"/></svg></span>
+<span class="step-num" aria-hidden="true">03</span>
+</div>
+<h3>If anything is queried, tell us.</h3>
+<p>We will help you understand what has been asked and what a sensible response looks like.</p>
+</article>
+<article class="step-card">
+<div class="step-top">
+<span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.582 22.55c-.22 0-.45-.04-.66-.13-.47-.2-.83-.59-.99-1.08l-.44-1.32c-.2-.6-.02-1.35.42-1.8l2.27-2.28c.03-.03.07-.14.07-.19v-2.47l-4.56 1.97c-.61.26-1.23.23-1.7-.08s-.75-.87-.75-1.52v-1.29c0-.98.7-2.03 1.59-2.38l5.41-2.34V4.8c0-1.21.85-2.6 1.93-3.16a1.8 1.8 0 0 1 1.63 0c1.09.56 1.94 1.94 1.94 3.15v2.84l5.44 2.34c.89.38 1.57 1.4 1.57 2.39v1.29c0 .66-.27 1.21-.75 1.52-.48.31-1.09.34-1.7.09l-4.56-1.97v2.47c0 .04.04.14.07.17l2.28 2.29c.44.44.62 1.21.42 1.8l-.44 1.32c-.17.49-.53.88-1.01 1.07-.47.19-.99.17-1.44-.05-.05-.03-.1-.06-.15-.1l-2.33-1.96c-.08-.07-.24-.06-.31 0l-2.33 1.96a.42.42 0 0 1-.14.09c-.24.14-.51.2-.78.2Zm.98-10.91c.23 0 .45.06.64.19.35.23.55.62.55 1.08v2.85c0 .43-.21.94-.51 1.24l-2.27 2.28c-.04.05-.08.2-.06.26l.44 1.33c.03.1.1.14.14.16.03.01.08.03.14.01l2.24-1.89c.63-.54 1.62-.54 2.25 0l2.23 1.88c.07.01.12 0 .15-.01.04-.02.12-.06.15-.16l.44-1.32a.376.376 0 0 0-.06-.26L13.762 17c-.3-.28-.52-.8-.52-1.24v-2.85c0-.45.19-.84.53-1.07.34-.23.78-.26 1.2-.08l4.92 2.12c.15.06.25.06.28.04.03-.02.07-.11.07-.27v-1.29c0-.38-.32-.87-.66-1.01l-5.58-2.41c-.44-.19-.75-.67-.75-1.15v-3c0-.66-.52-1.51-1.12-1.81a.319.319 0 0 0-.27 0c-.58.3-1.11 1.17-1.11 1.82v3c0 .47-.31.96-.75 1.15l-5.58 2.41c-.35.14-.67.63-.67 1v1.29c0 .16.04.25.07.27.03.02.13.02.28-.04l4.91-2.12c.18-.08.37-.12.55-.12Z" fill="currentColor"/></svg></span>
+<span class="step-num" aria-hidden="true">04</span>
+</div>
+<h3>Check the sticker before you travel.</h3>
+<p>Look at the dates, the number of entries and the duration of stay. Errors are rare but they happen, and they are far easier to correct before you are at an airport.</p>
+</article>
+</div>
+<div class="process-foot">
+<p class="process-note">That is the whole process, start to finish. If anything above raises a question specific to your case, ask us before you begin.</p>
+<button class="pill light" type="button" data-open-modal>
+  Speak to a consultant
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</button>
+</div>
 </div>
 </div>
 </section>
 
-<section class="sec card" id="notdo" aria-labelledby="notdo-title">
-<div class="advsplit">
-<div>
+<section class="sec" id="notdo" aria-labelledby="notdo-title">
+<div class="advwrap notdo-center">
 <p class="eyebrow"><i></i>At every stage</p>
 <h2 class="h2" id="notdo-title">
       <span class="ln"><span class="li">What we do not do,</span></span>
       <span class="ln"><span class="li">at any stage</span></span>
     </h2>
-</div>
-<div class="advsplit-body">
+<div class="advlede-col">
 <p class="body">We do not issue visas and we cannot influence a decision. Decisions are made solely by the consulate.</p>
 <p class="body">We are not affiliated with any government, embassy, consulate, VFS Global, TLScontact, BLS International or Global Visa Center World.</p>
 <p class="body">We never handle official fees. Those are paid by you, directly, at your appointment.</p>
@@ -681,32 +733,36 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
     <div class="faq-list" id="faq-list">
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Do I have to come to your office?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>No. Everything is handled remotely by WhatsApp and email. We are based in Ipswich and work with clients across the United Kingdom. The only thing you attend in person is your own biometric appointment, and that is at the visa application centre, not with us.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Are you a government or official visa service?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Who will I be dealing with?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>Abdul Mateen, the founder. He reads the cases himself, so the person who answers your first message is the person who prepares your file.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Do I have to come to your office?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>No. Everything is handled remotely by WhatsApp and email. We are based in Ipswich and work with clients across the United Kingdom. The only thing you attend in person is your own biometric appointment, and that is at the visa application centre, not with us.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">When do I pay?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>After terms are agreed in writing, and never before. Our fee starts from £125 and covers preparation and advice. The official visa fee and the application centre's service charge are separate, and you pay those directly at your appointment.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Who will I be dealing with?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>Abdul Mateen, the founder. He reads the cases himself, so the person who answers your first message is the person who prepares your file.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">What do I need to send you?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>We send a checklist built around your case once we have assessed it. Broadly it will cover your passport, your UK status, evidence of employment or study, financial evidence, and your travel plans. You can send things as you gather them rather than all at once.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">When do I pay?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>After terms are agreed in writing, and never before. Our fee starts from £95 and covers preparation and advice. The official visa fee and the application centre's service charge are separate, and you pay those directly at your appointment.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">Can you attend the appointment with me?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>No. Biometrics must be given by you in person, and visa application centres do not admit representatives in your place. What we can do is make sure you arrive with a file that does not need fixing at the counter.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">What do I need to send you?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>We send a checklist built around your case once we have assessed it. Broadly it will cover your passport, your UK status, evidence of employment or study, financial evidence, and your travel plans. You can send things as you gather them rather than all at once.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Do I get my passport back on the day?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>No. Your passport stays with your application and is returned after the decision, either by collection or by courier. Plan around not having it for the whole of that period, and do not book anything else that needs it.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Can you attend the appointment with me?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>No. Biometrics must be given by you in person, and visa application centres do not admit representatives in your place. What we can do is make sure you arrive with a file that does not need fixing at the counter.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">What if something goes wrong on the day?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>Tell us. Most day-of problems are document questions, and most are answerable. The point of the audit stage is that these are rare, but if one happens you are not on your own with it.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">Do I get my passport back on the day?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>No. Your passport stays with your application and is returned after the decision, either by collection or by courier. Plan around not having it for the whole of that period, and do not book anything else that needs it.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a8"><span class="fq-i">08</span><span class="fq-t">What if something goes wrong on the day?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a8" role="region"><div class="faq-a-in"><p>Tell us. Most day-of problems are document questions, and most are answerable. The point of the audit stage is that these are rare, but if one happens you are not on your own with it.</p></div></div>
     </div>
     </div>
   </div>
@@ -725,7 +781,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <p class="final-p">Tell us where you are going and when. You will get a straight answer the same working day, including if the answer is that your case does not need us.</p>
     <div class="final-ctas" id="final-ctas">
       <button class="pill light" type="button" data-focus-form>
-        Start your case
+        Speak to a consultant
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a class="pill ghost" href="https://wa.me/447482788545" target="_blank" rel="noopener">
@@ -753,21 +809,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/advisory">Advisory</a></li>
         <li><a href="/process">Our Process</a></li>
         <li><a href="/schengen-visa-processing-time">Processing Time</a></li>
+        <li><a href="/#services">Our Services</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/guides">Guides</a></li>
         <li><a href="/journal">Journal</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Our services">
-      <p class="f-h">Our Services</p>
-      <ul class="f-links">
-        <li><a href="/schengen-tourist-visa">Tourist Visa</a></li>
-        <li><a href="/schengen-business-visa">Business Visa</a></li>
-        <li><a href="/schengen-conference-visa">Business Conference Visa</a></li>
-        <li><a href="/schengen-medical-visa">Medical Treatment Visa</a></li>
-        <li><a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a></li>
-        <li><a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a></li>
+        <li><a href="/fees">Fees</a></li>
       </ul>
     </nav>
     <nav aria-label="Destinations">
@@ -778,8 +825,6 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/greece-visa-uk">Greece</a></li>
         <li><a href="/netherlands-visa-uk">Netherlands</a></li>
         <li><a href="/belgium-visa-uk">Belgium</a></li>
-        <li><a href="/italy-visa-uk">Italy</a></li>
-        <li><a href="/germany-visa-uk">Germany</a></li>
         <li><a href="/country">All 29 countries</a></li>
       </ul>
     </nav>
@@ -845,7 +890,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </nav>
       <div class="menu-bottom">
         <a class="pill light" href="/contact">
-          Contact Us
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <nav class="menu-social" aria-label="Social">
@@ -864,7 +909,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title-h">
     <div class="panel-head">
       <div>
-        <p class="eyebrow"><i></i>Start your application</p>
+        <p class="eyebrow"><i></i>Request a consultation</p>
         <h2 class="h2" id="modal-title-h"><span id="modal-title">
           <span class="ln"><span class="li">Tell us about</span></span>
           <span class="ln"><span class="li">your trip</span></span>
@@ -886,18 +931,18 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </div>
       <div class="field">
         <label for="f-msg">Where are you going, and when?</label>
-        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October — family of three, first Schengen application…"></textarea>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October, family of three, first Schengen application…"></textarea>
       </div>
-      <button class="submit-btn" type="submit" id="modal-submit">Start my application</button>
+      <button class="submit-btn" type="submit" id="modal-submit">Send my enquiry</button>
       <p class="modal-alt">Prefer to talk it through? <a href="https://wa.me/447482788545" target="_blank" rel="noopener">WhatsApp us: +44 7482 788545</a></p>
-      <p class="modal-note">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. We reply the same working day, Monday to Saturday — with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
-      <p class="modal-note enq-error" id="modal-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <p class="modal-note">Sending goes straight to our enquiry inbox. We reply the same working day, Monday to Saturday, with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
+      <p class="modal-note enq-error" id="modal-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </form>
 
     <div class="success" id="modal-success" hidden>
       <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Request received</h3>
-      <p id="success-text">Thanks — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
+      <p id="success-text">Thanks. We reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
       <button class="pill solid" type="button" id="modal-done">Done</button>
     </div>
   </div>

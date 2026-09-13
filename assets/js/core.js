@@ -224,33 +224,18 @@ function bindHover(el, target, from, to, cfg) {
 }
 
 /* =====================================================================
-   LOADER
+   PAGE REVEAL (loader screen removed — animations fire once the page loads)
    ===================================================================== */
-const loader = $('#loader');
-lockScroll();
-const lw = $('#loader .lw');
-Motion.of(lw).set({ opacity: 0, y: 16 });
-requestAnimationFrame(() => {
-  loader.classList.add('go');
-  Motion.of(lw).to({ opacity: 1, y: 0 }, { tension: 200, friction: 22 });
-});
-
 let revealed = false;
 function reveal() {
   if (revealed) return;
   revealed = true;
-  unlockScroll();
   heroReveal();
   gatedFns.forEach(f => f());
   startBgSlider();
-  loader.classList.add('exit');
-  setTimeout(() => loader.remove(), REDUCED ? 60 : 870);
 }
-const MIN_VISIBLE = REDUCED ? 200 : 1400;
-const MAX_VISIBLE = 2600;
-if (document.readyState === 'complete') setTimeout(reveal, MIN_VISIBLE);
-else addEventListener('load', () => setTimeout(reveal, MIN_VISIBLE));
-setTimeout(reveal, MAX_VISIBLE);
+if (document.readyState === 'complete') setTimeout(reveal, 0);
+else addEventListener('load', reveal);
 
 /* =====================================================================
    HERO
@@ -326,13 +311,12 @@ inview($('#enquiry'),  { from: { opacity: 0, y: 28 }, to: { opacity: 1, y: 0 }, 
    Both forms used to fake a success message and send nothing. They now
    actually deliver.
 
-   With no backend, delivery is a mailto: handoff — the same approach the rest
-   of the practice's contact points already use, and the form says so before you
-   press the button. To move to a real endpoint later, set ENQUIRY_ENDPOINT to a
-   URL that accepts a JSON POST; everything else here already handles it, and
-   the disclosure line swaps itself.
+   ENQUIRY_ENDPOINT posts to the Apps Script Web App that is the live
+   inbox pipeline — do not repoint it without confirming a real test
+   enquiry still lands. Falls back to a mailto: handoff only if the
+   endpoint is ever unset; the disclosure line swaps itself accordingly.
    ===================================================================== */
-const ENQUIRY_ENDPOINT = null;          // e.g. 'https://formspree.io/f/xxxxxxx'
+const ENQUIRY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwAzSszdieemimCkcpMQuL1GX29bYKB_PzkTJg5wKxRo-g3fOlzLdtZ3-TJ0W-qCPYvug/exec';
 const ENQUIRY_MAILBOX  = 'info@flypassholidays.co.uk';
 
 function enquiryBody(fields) {
@@ -348,8 +332,7 @@ async function deliverEnquiry(subject, fields) {
     try {
       const r = await fetch(ENQUIRY_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ subject, ...fields })
+        body: new URLSearchParams(fields)
       });
       return r.ok ? 'sent' : 'failed';
     } catch (err) {
@@ -367,6 +350,27 @@ async function deliverEnquiry(subject, fields) {
   }
 }
 
+/* =====================================================================
+   GOOGLE ADS / GA4 CONVERSION EVENTS
+   gtag() is loaded in <head>; this file only fires events on it.
+   ===================================================================== */
+const CONVERSIONS = {
+  whatsapp: 'AW-17835680281/Xb-ZCJrZkdgbEJnE27hC',
+  phone:    'AW-17835680281/EHoxCLPopNgbEJnE27hC',
+  email:    'AW-17835680281/d0aqCLbopNgbEJnE27hC',
+  form:     'AW-17835680281/SNl0CPal-9ocEJnE27hC'
+};
+function fireConversion(key) {
+  if (typeof gtag === 'function') gtag('event', 'conversion', { send_to: CONVERSIONS[key] });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"]');
+  if (!a) return;
+  if (a.href.startsWith('tel:')) fireConversion('phone');
+  else if (a.href.startsWith('mailto:')) fireConversion('email');
+  else fireConversion('whatsapp');
+});
+
 const eForm = $('#enquiry-form'), eSuccess = $('#enq-success'), eSubmit = $('#enq-submit');
 /* Null-safe: service pages carry no hero enquiry form; without this guard the whole
    engine died here and every later binding (FAQ, nav, steps) never attached. */
@@ -377,12 +381,13 @@ if (eForm && eSuccess && eSubmit) eForm.addEventListener('submit', async e => {
   eSubmit.textContent = ENQUIRY_ENDPOINT ? 'Sending…' : 'Opening your email…';
   const first = ($('#e-name').value.trim().split(/\s+/)[0]) || 'there';
   const result = await deliverEnquiry('Schengen visa enquiry — ' + ($('#e-name').value.trim() || 'website'), {
-    'Full name':   $('#e-name').value,
-    'Email':       $('#e-email').value,
-    'Phone':       $('#e-phone').value,
-    'Nationality': $('#e-nat').value,
-    'Destination': $('#e-dest').value,
-    'Description': $('#e-desc').value
+    name:        $('#e-name').value,
+    email:       $('#e-email').value,
+    phone:       $('#e-phone').value,
+    whatsapp:    $('#e-phone').value,
+    nationality: $('#e-nat').value,
+    destination: $('#e-dest').value,
+    notes:       $('#e-desc').value
   });
   if (result === 'failed') {
     eSubmit.disabled = false;
@@ -390,6 +395,7 @@ if (eForm && eSuccess && eSubmit) eForm.addEventListener('submit', async e => {
     $('#enq-error').hidden = false;
     return;
   }
+  if (result === 'sent') fireConversion('form');
   $('#enq-success-text').textContent = result === 'sent'
     ? `Thanks, ${first} — we reply the same working day, Monday to Saturday, with a straight answer.`
     : `Your email client should now be open, ${first}, with your details filled in. Press send there and we reply the same working day, Monday to Saturday.`;
@@ -480,18 +486,18 @@ inview($('.cost-note'),   { from: { opacity: 0, y: 18 }, to: { opacity: 1, y: 0 
 function sizeWhoImage() {
   const fig = $('#who-img'), content = $('.who-content');
   if (!fig || !content) return;
-  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeWhoImage();
 addEventListener('resize', sizeWhoImage);
 addEventListener('load', sizeWhoImage);
 
-/* Why-choose image height = 1.2 x content height on desktop */
+/* Why-choose image height = 1.15 x content height on desktop */
 function sizeWhyImage() {
   const fig = $('#whyc-img'), content = $('.whyc-content');
   if (!fig || !content) return;
-  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeWhyImage();
@@ -501,15 +507,35 @@ addEventListener('load', sizeWhyImage);
 /* Service rows */
 
 
-/* Process — sticky step stack: cards 2 & 3 slide up, then the note + CTA appear */
+/* Process — sticky step stack: card 1 stays put, every later card slides up
+   in its own turn, then the note + CTA appear. Spans are generated for
+   however many step-cards exist (home.js/about-us.js hardcode this for a
+   fixed 3-card layout; this file also serves pages like process.html with
+   a different card count, so it derives the same choreography for N). */
 const stepCards = $$('.step-card');
 const processWrap = $('#process-wrap');
 const processFoot = $('.process-foot');
 const stepsPinned = innerWidth >= 1024 && !REDUCED;
-if (stepCards.length) {
+const slideCount = Math.max(0, stepCards.length - 1);
+/* Reproduces the homepage's hand-tuned timing exactly when slideCount is 2
+   (start 0.08, 0.36-wide spans, 0.04 gaps, foot starts 0.86 for 0.14) and
+   extrapolates it for any other count. */
+const SPAN_START = 0.08, SPAN_GAP = 0.04, FOOT_GAP = 0.02, FOOT_SPAN = 0.14;
+const spanWidth = slideCount ? (1 - SPAN_START - FOOT_GAP - FOOT_SPAN - (slideCount - 1) * SPAN_GAP) / slideCount : 0;
+const stepSpans = Array.from({ length: slideCount }, (_, k) => {
+  const a = SPAN_START + k * (spanWidth + SPAN_GAP);
+  return [a, a + spanWidth];
+});
+const footStart = SPAN_START + slideCount * spanWidth + Math.max(0, slideCount - 1) * SPAN_GAP + FOOT_GAP;
+/* processWrap gates this: it's the homepage/about-us pinned-scroll wrapper.
+   Other pages (e.g. process.html) reuse the plain .step-card visual style
+   without that wrapper, so without this guard stepCards.length alone would
+   wrongly trigger the pin logic and crash on the missing processFoot. */
+if (stepCards.length && processWrap) {
   if (stepsPinned) {
-    stepCards[1].style.transform = 'translate3d(0, 100vh, 0)';
-    stepCards[2].style.transform = 'translate3d(0, 100vh, 0)';
+    for (let ci = 1; ci < stepCards.length; ci++) {
+      stepCards[ci].style.transform = 'translate3d(0, 100vh, 0)';
+    }
     processFoot.style.opacity = 0;
   } else {
     stepCards.forEach((card, i) => {
@@ -517,6 +543,11 @@ if (stepCards.length) {
     });
     inview(processFoot, { from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 }, cfg: { tension: 190, friction: 26 }, delay: 200 });
   }
+} else if (stepCards.length) {
+  /* No pinned wrapper on this page — plain stacked reveal, same as about-us.js. */
+  stepCards.forEach((card, i) => {
+    inview(card, { from: { opacity: 0, y: 40 }, to: { opacity: 1, y: 0 }, cfg: { tension: 180, friction: 26 }, delay: i * 120 });
+  });
 }
 function centerProcessSticky() {
   const st = $('.process-sticky');
@@ -529,19 +560,18 @@ addEventListener('resize', centerProcessSticky);
 addEventListener('load', centerProcessSticky);
 
 function stepTick() {
-  if (!stepsPinned || !processWrap) return;
+  if (!stepsPinned || !processWrap || !slideCount) return;
   const r = processWrap.getBoundingClientRect();
   const total = r.height - innerHeight;
   if (total <= 0) return;
   const p = clamp(-r.top / total, 0, 1);
-  const spans = [[0.08, 0.44], [0.48, 0.84]];
-  [1, 2].forEach((ci, k) => {
-    const [a, b] = spans[k];
+  stepSpans.forEach(([a, b], k) => {
+    const ci = k + 1;
     const t = clamp((p - a) / (b - a), 0, 1);
     const e = 1 - Math.pow(1 - t, 3);
     stepCards[ci].style.transform = `translate3d(0, ${(1 - e) * innerHeight}px, 0)`;
   });
-  const ft = clamp((p - 0.86) / 0.14, 0, 1);
+  const ft = clamp((p - footStart) / FOOT_SPAN, 0, 1);
   const fe = 1 - Math.pow(1 - ft, 3);
   processFoot.style.opacity = fe;
   processFoot.style.transform = `translate3d(0, ${(1 - fe) * 30}px, 0)`;
@@ -719,7 +749,7 @@ function resetForm() {
   mForm.hidden = false;
   mSuccess.hidden = true;
   mSubmit.disabled = false;
-  mSubmit.textContent = 'Start my application';
+  mSubmit.textContent = 'Send my enquiry';
 }
 mForm.addEventListener('submit', async e => {
   e.preventDefault();
@@ -727,16 +757,21 @@ mForm.addEventListener('submit', async e => {
   mSubmit.textContent = ENQUIRY_ENDPOINT ? 'Sending…' : 'Opening your email…';
   const first = ($('#f-name').value.trim().split(/\s+/)[0]) || 'there';
   const result = await deliverEnquiry('Schengen visa enquiry — ' + ($('#f-name').value.trim() || 'website'), {
-    'Full name': $('#f-name').value,
-    'Email':     $('#f-email').value,
-    'Trip':      $('#f-msg').value
+    name:        $('#f-name').value,
+    email:       $('#f-email').value,
+    phone:       '',
+    whatsapp:    '',
+    nationality: '',
+    destination: '',
+    notes:       $('#f-msg').value
   });
   if (result === 'failed') {
     mSubmit.disabled = false;
-    mSubmit.textContent = 'Start my application';
+    mSubmit.textContent = 'Send my enquiry';
     $('#modal-error').hidden = false;
     return;
   }
+  if (result === 'sent') fireConversion('form');
   $('#success-text').textContent = result === 'sent'
     ? `Thanks, ${first} — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.`
     : `Your email client should now be open, ${first}, with your details filled in. Press send there and we reply the same working day, Monday to Saturday.`;
@@ -795,12 +830,12 @@ addEventListener('keydown', e => {
   }
 });
 
-/* Side-by-side media sections (.advmedia): image height = 1.2 x content height on desktop. */
+/* Side-by-side media sections (.advmedia): image height = 1.15 x content height on desktop. */
 function sizeAdvMedia() {
   $$('.advmedia').forEach(grid => {
     const fig = grid.querySelector('.advmedia-img'), content = grid.querySelector('.advmedia-content');
     if (!fig || !content) return;
-    if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+    if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
     else fig.style.removeProperty('height');
   });
 }

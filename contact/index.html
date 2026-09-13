@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17835680281"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17835680281');
+gtag('config', 'G-M2K7XD4KXD');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact Flypass Holidays | Schengen Visa Consultancy</title>
 <meta name="description" content="Message us on WhatsApp, send the form, or arrange a consultation call. A straight answer the same working day, Monday to Saturday, from the person who reads your file.">
@@ -32,7 +41,7 @@
 <style>
 /* Onest, self-hosted. Two reasons it came off Google Fonts: the stylesheet was
    render-blocking on a third-party origin, and the swap from the fallback face
-   measured as the single cause of ALL remaining layout shift — blocking
+   measured as the single cause of ALL remaining layout shift: blocking
    fonts.gstatic.com took CLS from 0.28 to 0.00 on every page.
 
    font-display:optional means the browser uses the face only if it is ready
@@ -59,7 +68,7 @@
 .fl-statutory strong{font-weight:500;color:var(--ink)}
 .fl-statutory a{border-bottom:1px solid var(--ghost);transition:color .25s,border-color .25s}
 .fl-statutory a:hover{color:var(--brand);border-bottom-color:var(--brand)}
-/* The two halves are a legal disclosure and an independence statement — related,
+/* The two halves are a legal disclosure and an independence statement, related,
    but not one sentence. On a wide viewport they sit on one line separated by a
    rule; below that the second half drops to its own line. */
 .fl-sep{display:none}
@@ -68,7 +77,7 @@
 
 /* ---------- Key facts panel ----------
    Answer-first summary. Every row is a question someone actually types, with
-   the answer in the first clause — the format both a hurried reader and an
+   the answer in the first clause: the format both a hurried reader and an
    answer engine can lift without needing the paragraph around it. */
 .facts{background:var(--surface);border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3rem 1.25rem}
 @media (min-width:640px){.facts{padding:4.5rem 3rem}}
@@ -197,6 +206,14 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Are you a government or official visa service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How quickly will I hear back?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -292,25 +309,13 @@
 </defs>
 </svg>
 
-<!-- Intro loader -->
-<div id="loader" aria-hidden="true">
-  <div class="lw"><svg class="logo ondark" viewBox="0 0 336 75" aria-hidden="true"><use href="#fp-logo"/></svg></div>
-  <div class="track"><div class="fill"></div></div>
-</div>
-<noscript><style>#loader{display:none}</style></noscript>
-<script>
-/* Failsafe: never trap the page behind the loader if the module script dies */
-setTimeout(function(){var l=document.getElementById('loader');
-if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentElement.classList.remove('lock');}},6500);
-</script>
-
 <div class="page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ TOP BAR ============ -->
 <header class="top-bar">
-  <a class="tb-brand" href="/" aria-label="Flypass Holidays — home">
+  <a class="tb-brand" href="/" aria-label="Flypass Holidays home page">
     <svg class="logo" viewBox="0 0 336 75" role="img" aria-label="Flypass Holidays"><use href="#fp-logo"/></svg>
   </a>
   <nav class="tb-nav" aria-label="Primary">
@@ -325,19 +330,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <a href="/schengen-visa-processing-time">Processing Time</a>
       </div>
     </div>
-    <div class="nav-item">
-      <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Our Services
-        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="drop-panel" role="menu" aria-label="Our services">
-        <a href="/schengen-tourist-visa">Tourist Visa</a>
-        <a href="/schengen-business-visa">Business Visa</a>
-        <a href="/schengen-conference-visa">Business Conference Visa</a>
-        <a href="/schengen-medical-visa">Medical Treatment Visa</a>
-        <a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a>
-        <a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a>
-      </div>
-    </div>
+    <a href="/#services">Our Services</a>
     <div class="nav-item has-mega">
       <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Destinations
         <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -345,7 +338,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <div class="mega-panel" role="menu" aria-label="Destinations">
         <div class="mega-head">
           <p class="mega-title">All 29 Schengen countries</p>
-          <p class="mega-note">One visa covers them all &mdash; your application goes to the consulate of your main destination.</p>
+          <p class="mega-note">One visa covers them all: your application goes to the consulate of your main destination.</p>
         </div>
         <div class="mega-grid">
           <a href="/country"><span class="fl">&#127462;&#127481;</span>Austria</a>
@@ -357,11 +350,11 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <a href="/country"><span class="fl">&#127466;&#127466;</span>Estonia</a>
           <a href="/country"><span class="fl">&#127467;&#127470;</span>Finland</a>
           <a href="/france-schengen-visa"><span class="fl">&#127467;&#127479;</span>France</a>
-          <a href="/germany-visa-uk"><span class="fl">&#127465;&#127466;</span>Germany</a>
+          <a href="/country"><span class="fl">&#127465;&#127466;</span>Germany</a>
           <a href="/greece-visa-uk"><span class="fl">&#127468;&#127479;</span>Greece</a>
           <a href="/country"><span class="fl">&#127469;&#127482;</span>Hungary</a>
           <a href="/country"><span class="fl">&#127470;&#127480;</span>Iceland</a>
-          <a href="/italy-visa-uk"><span class="fl">&#127470;&#127481;</span>Italy</a>
+          <a href="/country"><span class="fl">&#127470;&#127481;</span>Italy</a>
           <a href="/country"><span class="fl">&#127473;&#127483;</span>Latvia</a>
           <a href="/country"><span class="fl">&#127473;&#127470;</span>Liechtenstein</a>
           <a href="/country"><span class="fl">&#127473;&#127481;</span>Lithuania</a>
@@ -385,7 +378,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <a href="/journal">Journal</a>
   </nav>
   <div class="tb-right">
-    <a class="pill solid sm tb-cta" href="/contact">Contact Us</a>
+    <a class="pill solid sm tb-cta" href="/contact">Request a consultation</a>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"><span></span><span></span></span>
     </button>
@@ -406,6 +399,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
   <div class="hero-split">
     <div class="hero-left">
+     <div class="hero-copy-top">
       <h1 id="hero-title">
         <span class="giant" data-words>Contact Flypass Holidays</span>
       </h1>
@@ -421,18 +415,9 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="hero-trust" id="hero-strip">
-        <ul class="trust-list">
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Registered in England, Companies House 16891200</span></span></li>
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>ICO registered ZC149216</span></span></li>
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Replies the same working day, Monday to Saturday</span></span></li>
-        </ul>
-      </div>
-      <p class="tp-line tp-bottom" id="hero-tp"><span class="ln"><span class="li"><span>Rated</span><strong>4.5</strong><span>on</span><svg class="tp" viewBox="0 0 140 34" role="img" aria-label="Trustpilot"><use href="#tp-logo"/></svg><span>from 24 reviews</span></span></span></p>
-      <p class="hero-disclaimer" id="hero-disc"><span class="ln"><span class="li">Independent consultancy. Not affiliated with any government, embassy, consulate, VFS Global, TLScontact, BLS International or GVCW. Official visa fees are paid directly to the relevant authority.</span></span></p>
-    </div>
+     </div>
 
-    <div class="enquiry glass" id="enquiry">
+      <div class="enquiry glass" id="enquiry">
       <p class="enq-title">Consultancy enquiry</p>
       <p class="enq-note">This is an enquiry form for our advisory service. It is not a visa application form and nothing is submitted to any consulate or visa centre.</p>
       <form class="enq-form" id="enquiry-form">
@@ -456,15 +441,29 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         </div>
         <label class="enq-terms"><input type="checkbox" id="e-terms" required><span>I have read and accept the <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms and Conditions</a>.</span></label>
         <button class="enq-submit" type="submit" id="enq-submit">Send your enquiry</button>
-        <p class="enq-foot">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. Nothing is submitted to any consulate or visa centre.<br>Details you send are handled as described in our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Replies the same working day, Monday to Saturday.</p>
-        <p class="enq-error" id="enq-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+        <p class="enq-foot">Sending goes straight to our enquiry inbox. Nothing is submitted to any consulate or visa centre.<br>Details you send are handled as described in our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Replies the same working day, Monday to Saturday.</p>
+        <p class="enq-error" id="enq-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
       </form>
       <div class="enq-success" id="enq-success" hidden>
         <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
         <h3>Enquiry received</h3>
-        <p id="enq-success-text">Thanks — we reply the same working day, Monday to Saturday, with a straight answer.</p>
+        <p id="enq-success-text">Thanks. We reply the same working day, Monday to Saturday, with a straight answer.</p>
       </div>
     </div>
+
+     <div class="hero-copy-bottom">
+      <div class="hero-trust" id="hero-strip">
+        <ul class="trust-list">
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Registered in England, Companies House 16891200</span></span></li>
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>ICO registered ZC149216</span></span></li>
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Replies the same working day, Monday to Saturday</span></span></li>
+        </ul>
+      </div>
+      <p class="tp-line tp-bottom" id="hero-tp"><span class="ln"><span class="li"><span>Rated</span><strong>4.5</strong><span>on</span><svg class="tp" viewBox="0 0 140 34" role="img" aria-label="Trustpilot"><use href="#tp-logo"/></svg><span>from 24 reviews</span></span></span></p>
+      <p class="hero-disclaimer" id="hero-disc"><span class="ln"><span class="li">Independent consultancy. Not affiliated with any government, embassy, consulate, VFS Global, TLScontact, BLS International or GVCW. Official visa fees are paid directly to the relevant authority.</span></span></p>
+    
+     </div>
+</div>
   </div>
 </section>
 
@@ -566,7 +565,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12S6.07 1.25 12 1.25 22.75 6.07 22.75 12 17.93 22.75 12 22.75Zm0-20C6.9 2.75 2.75 6.9 2.75 12S6.9 21.25 12 21.25s9.25-4.15 9.25-9.25S17.1 2.75 12 2.75Z" fill="currentColor"/><path d="M15.71 15.932a.67.67 0 0 1-.38-.11l-3.1-1.85c-.77-.46-1.34-1.47-1.34-2.36v-4.1c0-.41.34-.75.75-.75s.75.34.75.75v4.1c0 .36.3.89.61 1.07l3.1 1.85c.36.21.47.67.26 1.03a.77.77 0 0 1-.65.37Z" fill="currentColor"/></svg></span>
 <p><strong>We tell you honestly whether you need us.</strong> If your case is straightforward and you have time in hand, we say so. Plenty of people apply successfully on their own.</p></div>
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.89 18.222H6.1c-.52 0-1.01-.05-1.45-.15a3.74 3.74 0 0 1-.8-.22c-1.33-.5-2.9-1.73-2.9-4.79v-5.15c0-3.27 1.88-5.15 5.15-5.15h8.79c2.76 0 4.54 1.32 5.02 3.72.09.44.13.91.13 1.43v5.15c0 3.29-1.87 5.16-5.15 5.16ZM6.11 4.282c-2.46 0-3.65 1.19-3.65 3.65v5.15c0 1.79.63 2.89 1.92 3.38.2.07.39.12.57.15.38.08.75.12 1.16.12h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-.42-.03-.79-.1-1.13-.34-1.7-1.5-2.52-3.55-2.52H6.11Z" fill="currentColor"/><path d="M17.891 21.22h-8.79c-.85 0-1.61-.12-2.26-.37-1.47-.55-2.43-1.71-2.76-3.37a.74.74 0 0 1 .21-.68.73.73 0 0 1 .69-.19c.33.07.7.11 1.12.11h8.79c2.46 0 3.65-1.19 3.65-3.65V7.92c0-.42-.03-.79-.1-1.13-.05-.25.03-.5.2-.68.18-.18.43-.26.68-.2 2.4.49 3.72 2.27 3.72 5.01v5.15c0 3.28-1.87 5.15-5.15 5.15Zm-11.97-3c.32.58.8.99 1.46 1.23.48.18 1.06.27 1.73.27h8.79c2.46 0 3.65-1.19 3.65-3.65v-5.15c0-1.58-.49-2.63-1.5-3.18v5.33c0 3.27-1.88 5.15-5.15 5.15H5.921Z" fill="currentColor"/><path d="M10.5 13.89c-1.87 0-3.39-1.52-3.39-3.39s1.52-3.39 3.39-3.39 3.39 1.52 3.39 3.39-1.52 3.39-3.39 3.39Zm0-5.28c-1.04 0-1.89.85-1.89 1.89s.85 1.89 1.89 1.89 1.89-.85 1.89-1.89-.85-1.89-1.89-1.89ZM4.781 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75ZM16.21 13.45c-.41 0-.75-.34-.75-.75V8.3c0-.41.34-.75.75-.75s.75.34.75.75v4.4c0 .41-.33.75-.75.75Z" fill="currentColor"/></svg></span>
-<p><strong>If we can help, you get a written quote.</strong> Our fee starts from £125 and is confirmed in writing before any work begins. Nothing is added later, and nothing is charged until you agree.</p></div>
+<p><strong>If we can help, you get a written quote.</strong> Our fee starts from £95 and is confirmed in writing before any work begins. Nothing is added later, and nothing is charged until you agree.</p></div>
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21.25H7c-3.65 0-5.75-2.1-5.75-5.75v-7c0-3.65 2.1-5.75 5.75-5.75h10c3.65 0 5.75 2.1 5.75 5.75v7c0 3.65-2.1 5.75-5.75 5.75Zm-10-17c-2.86 0-4.25 1.39-4.25 4.25v7c0 2.86 1.39 4.25 4.25 4.25h10c2.86 0 4.25-1.39 4.25-4.25v-7c0-2.86-1.39-4.25-4.25-4.25H7Z" fill="currentColor"/><path d="M11.999 12.868c-.84 0-1.69-.26-2.34-.79l-3.13-2.5a.748.748 0 0 1 .93-1.17l3.13 2.5c.76.61 2.05.61 2.81 0l3.13-2.5c.32-.26.8-.21 1.05.12.26.32.21.8-.12 1.05l-3.13 2.5c-.64.53-1.49.79-2.33.79Z" fill="currentColor"/></svg></span>
 <p><strong>If we cannot help, we say that too.</strong> If your dates cannot be serviced honestly, or your case is outside what we do, you will hear it at the first message rather than after you have paid.</p></div>
 </div>
@@ -624,28 +623,32 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
     <div class="faq-list" id="faq-list">
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">How quickly will I hear back?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>The same working day, Monday to Saturday. If you message late on a Saturday you will hear on Monday.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Are you a government or official visa service?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Who will I actually be speaking to?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>Abdul Mateen, who founded the practice. He reads the cases himself, so the person who answers your first message is the person who would prepare your file.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">How quickly will I hear back?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>The same working day, Monday to Saturday. If you message late on a Saturday you will hear on Monday.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Is the first conversation free?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>Yes. Nothing is charged and no work begins until terms are agreed with you in writing.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Who will I actually be speaking to?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>Abdul Mateen, who founded the practice. He reads the cases himself, so the person who answers your first message is the person who would prepare your file.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">Do I need to send documents to get an answer?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>No. Your destination, rough dates, nationality and UK status are enough for a first answer. Documents come later, once you have decided to go ahead.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">Is the first conversation free?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>Yes. Nothing is charged and no work begins until terms are agreed with you in writing.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">Do I have to visit your office?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>No. Everything is handled remotely by WhatsApp and email. The only thing you attend in person is your own biometric appointment, and that is at the visa application centre, not with us.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">Do I need to send documents to get an answer?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>No. Your destination, rough dates, nationality and UK status are enough for a first answer. Documents come later, once you have decided to go ahead.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Can you help if my trip is very soon?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>Sometimes, and often not. Appointment availability is usually the binding constraint rather than the decision itself. Tell us your dates and you will get an honest answer at the first message rather than after you have paid.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Do I have to visit your office?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>No. Everything is handled remotely by WhatsApp and email. The only thing you attend in person is your own biometric appointment, and that is at the visa application centre, not with us.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">Can you help if my trip is very soon?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>Sometimes, and often not. Appointment availability is usually the binding constraint rather than the decision itself. Tell us your dates and you will get an honest answer at the first message rather than after you have paid.</p></div></div>
     </div>
     </div>
   </div>
@@ -740,21 +743,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/advisory">Advisory</a></li>
         <li><a href="/process">Our Process</a></li>
         <li><a href="/schengen-visa-processing-time">Processing Time</a></li>
+        <li><a href="/#services">Our Services</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/guides">Guides</a></li>
         <li><a href="/journal">Journal</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Our services">
-      <p class="f-h">Our Services</p>
-      <ul class="f-links">
-        <li><a href="/schengen-tourist-visa">Tourist Visa</a></li>
-        <li><a href="/schengen-business-visa">Business Visa</a></li>
-        <li><a href="/schengen-conference-visa">Business Conference Visa</a></li>
-        <li><a href="/schengen-medical-visa">Medical Treatment Visa</a></li>
-        <li><a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a></li>
-        <li><a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a></li>
+        <li><a href="/fees">Fees</a></li>
       </ul>
     </nav>
     <nav aria-label="Destinations">
@@ -765,8 +759,6 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/greece-visa-uk">Greece</a></li>
         <li><a href="/netherlands-visa-uk">Netherlands</a></li>
         <li><a href="/belgium-visa-uk">Belgium</a></li>
-        <li><a href="/italy-visa-uk">Italy</a></li>
-        <li><a href="/germany-visa-uk">Germany</a></li>
         <li><a href="/country">All 29 countries</a></li>
       </ul>
     </nav>
@@ -832,7 +824,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </nav>
       <div class="menu-bottom">
         <a class="pill light" href="/contact">
-          Contact Us
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <nav class="menu-social" aria-label="Social">
@@ -851,7 +843,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title-h">
     <div class="panel-head">
       <div>
-        <p class="eyebrow"><i></i>Start your application</p>
+        <p class="eyebrow"><i></i>Request a consultation</p>
         <h2 class="h2" id="modal-title-h"><span id="modal-title">
           <span class="ln"><span class="li">Tell us about</span></span>
           <span class="ln"><span class="li">your trip</span></span>
@@ -873,18 +865,18 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </div>
       <div class="field">
         <label for="f-msg">Where are you going, and when?</label>
-        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October — family of three, first Schengen application…"></textarea>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October, family of three, first Schengen application…"></textarea>
       </div>
-      <button class="submit-btn" type="submit" id="modal-submit">Start my application</button>
+      <button class="submit-btn" type="submit" id="modal-submit">Send my enquiry</button>
       <p class="modal-alt">Prefer to talk it through? <a href="https://wa.me/447482788545" target="_blank" rel="noopener">WhatsApp us: +44 7482 788545</a></p>
-      <p class="modal-note">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. We reply the same working day, Monday to Saturday — with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
-      <p class="modal-note enq-error" id="modal-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <p class="modal-note">Sending goes straight to our enquiry inbox. We reply the same working day, Monday to Saturday, with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
+      <p class="modal-note enq-error" id="modal-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </form>
 
     <div class="success" id="modal-success" hidden>
       <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Request received</h3>
-      <p id="success-text">Thanks — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
+      <p id="success-text">Thanks. We reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
       <button class="pill solid" type="button" id="modal-done">Done</button>
     </div>
   </div>

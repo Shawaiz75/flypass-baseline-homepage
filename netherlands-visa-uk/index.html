@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17835680281"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17835680281');
+gtag('config', 'G-M2K7XD4KXD');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Netherlands Visa from the UK | Requirements, Cost, Time</title>
 <meta name="description" content="A Netherlands visa from the UK for non-UK nationals: the EUR 90 fee, four VFS centres, Schiphol transit, and why Dutch processing runs longer than you have been told.">
@@ -32,7 +41,7 @@
 <style>
 /* Onest, self-hosted. Two reasons it came off Google Fonts: the stylesheet was
    render-blocking on a third-party origin, and the swap from the fallback face
-   measured as the single cause of ALL remaining layout shift — blocking
+   measured as the single cause of ALL remaining layout shift: blocking
    fonts.gstatic.com took CLS from 0.28 to 0.00 on every page.
 
    font-display:optional means the browser uses the face only if it is ready
@@ -59,7 +68,7 @@
 .fl-statutory strong{font-weight:500;color:var(--ink)}
 .fl-statutory a{border-bottom:1px solid var(--ghost);transition:color .25s,border-color .25s}
 .fl-statutory a:hover{color:var(--brand);border-bottom-color:var(--brand)}
-/* The two halves are a legal disclosure and an independence statement — related,
+/* The two halves are a legal disclosure and an independence statement, related,
    but not one sentence. On a wide viewport they sit on one line separated by a
    rule; below that the second half drops to its own line. */
 .fl-sep{display:none}
@@ -68,7 +77,7 @@
 
 /* ---------- Key facts panel ----------
    Answer-first summary. Every row is a question someone actually types, with
-   the answer in the first clause — the format both a hurried reader and an
+   the answer in the first clause: the format both a hurried reader and an
    answer engine can lift without needing the paragraph around it. */
 .facts{background:var(--surface);border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3rem 1.25rem}
 @media (min-width:640px){.facts{padding:4.5rem 3rem}}
@@ -91,6 +100,9 @@
 .enq-error{margin-top:.8rem;font-size:.72rem;line-height:1.6;color:#ffb3ac}
 .enq-error a{text-decoration:underline}
 .modal-note.enq-error{color:var(--brand)}
+
+/* ---------- Testimonials: gray, to alternate with the white FAQ below ---------- */
+#reviews{background:var(--surface) !important}
 
 </style>
 
@@ -162,7 +174,7 @@
       "name": "Netherlands Visa from the UK | Requirements, Cost, Time",
       "description": "A Netherlands visa from the UK for non-UK nationals: the EUR 90 fee, four VFS centres, Schiphol transit, and why Dutch processing runs longer than you have been told.",
       "inLanguage": "en-GB",
-      "dateModified": "2026-08-27",
+      "dateModified": "2026-09-14",
       "isPartOf": {
         "@id": "https://flypassholidays.co.uk/#website"
       },
@@ -203,6 +215,14 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Are you a government or official visa service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do I need a visa for the Netherlands from the UK?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -238,7 +258,7 @@
           "name": "How much does a Netherlands visa cost from the UK?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "EUR 90 for an adult and EUR 45 for a child aged six to eleven, free under six. VFS Global charges its own service fee on the day. If you use a consultancy that is a third and separate cost. Ours starts from £125."
+            "text": "EUR 90 for an adult and EUR 45 for a child aged six to eleven, free under six. VFS Global charges its own service fee on the day. If you use a consultancy that is a third and separate cost. Ours starts from £95."
           }
         },
         {
@@ -346,25 +366,13 @@
 </defs>
 </svg>
 
-<!-- Intro loader -->
-<div id="loader" aria-hidden="true">
-  <div class="lw"><svg class="logo ondark" viewBox="0 0 336 75" aria-hidden="true"><use href="#fp-logo"/></svg></div>
-  <div class="track"><div class="fill"></div></div>
-</div>
-<noscript><style>#loader{display:none}</style></noscript>
-<script>
-/* Failsafe: never trap the page behind the loader if the module script dies */
-setTimeout(function(){var l=document.getElementById('loader');
-if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentElement.classList.remove('lock');}},6500);
-</script>
-
 <div class="page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ TOP BAR ============ -->
 <header class="top-bar">
-  <a class="tb-brand" href="/" aria-label="Flypass Holidays — home">
+  <a class="tb-brand" href="/" aria-label="Flypass Holidays home page">
     <svg class="logo" viewBox="0 0 336 75" role="img" aria-label="Flypass Holidays"><use href="#fp-logo"/></svg>
   </a>
   <nav class="tb-nav" aria-label="Primary">
@@ -379,19 +387,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <a href="/schengen-visa-processing-time">Processing Time</a>
       </div>
     </div>
-    <div class="nav-item">
-      <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Our Services
-        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="drop-panel" role="menu" aria-label="Our services">
-        <a href="/schengen-tourist-visa">Tourist Visa</a>
-        <a href="/schengen-business-visa">Business Visa</a>
-        <a href="/schengen-conference-visa">Business Conference Visa</a>
-        <a href="/schengen-medical-visa">Medical Treatment Visa</a>
-        <a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a>
-        <a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a>
-      </div>
-    </div>
+    <a href="/#services">Our Services</a>
     <div class="nav-item has-mega">
       <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Destinations
         <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -399,7 +395,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <div class="mega-panel" role="menu" aria-label="Destinations">
         <div class="mega-head">
           <p class="mega-title">All 29 Schengen countries</p>
-          <p class="mega-note">One visa covers them all &mdash; your application goes to the consulate of your main destination.</p>
+          <p class="mega-note">One visa covers them all: your application goes to the consulate of your main destination.</p>
         </div>
         <div class="mega-grid">
           <a href="/country"><span class="fl">&#127462;&#127481;</span>Austria</a>
@@ -411,11 +407,11 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <a href="/country"><span class="fl">&#127466;&#127466;</span>Estonia</a>
           <a href="/country"><span class="fl">&#127467;&#127470;</span>Finland</a>
           <a href="/france-schengen-visa"><span class="fl">&#127467;&#127479;</span>France</a>
-          <a href="/germany-visa-uk"><span class="fl">&#127465;&#127466;</span>Germany</a>
+          <a href="/country"><span class="fl">&#127465;&#127466;</span>Germany</a>
           <a href="/greece-visa-uk"><span class="fl">&#127468;&#127479;</span>Greece</a>
           <a href="/country"><span class="fl">&#127469;&#127482;</span>Hungary</a>
           <a href="/country"><span class="fl">&#127470;&#127480;</span>Iceland</a>
-          <a href="/italy-visa-uk"><span class="fl">&#127470;&#127481;</span>Italy</a>
+          <a href="/country"><span class="fl">&#127470;&#127481;</span>Italy</a>
           <a href="/country"><span class="fl">&#127473;&#127483;</span>Latvia</a>
           <a href="/country"><span class="fl">&#127473;&#127470;</span>Liechtenstein</a>
           <a href="/country"><span class="fl">&#127473;&#127481;</span>Lithuania</a>
@@ -439,7 +435,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <a href="/journal">Journal</a>
   </nav>
   <div class="tb-right">
-    <a class="pill solid sm tb-cta" href="/contact">Contact Us</a>
+    <a class="pill solid sm tb-cta" href="/contact">Request a consultation</a>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"><span></span><span></span></span>
     </button>
@@ -460,6 +456,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
   <div class="hero-split">
     <div class="hero-left">
+     <div class="hero-copy-top">
       <h1 id="hero-title">
         <span class="giant" data-words>Netherlands Visa from the UK: The Complete Guide for Non-UK Nationals</span>
       </h1>
@@ -467,7 +464,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <p class="hero-emote" id="hero-emote"><span class="ln"><span class="li">Written and kept current by a UK consultancy that prepares Schengen applications every week.</span></span></p>
       <div class="hero-wa" id="hero-wa">
         <button class="pill light" type="button" data-focus-form>
-          Ask about your Netherlands application
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
         <a class="pill ghost" href="https://wa.me/447482788545" target="_blank" rel="noopener">
@@ -475,18 +472,9 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="hero-trust" id="hero-strip">
-        <ul class="trust-list">
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Registered in England, Companies House 16891200</span></span></li>
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>ICO registered ZC149216</span></span></li>
-          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Replies the same working day, Monday to Saturday</span></span></li>
-        </ul>
-      </div>
-      <p class="tp-line tp-bottom" id="hero-tp"><span class="ln"><span class="li"><span>Rated</span><strong>4.5</strong><span>on</span><svg class="tp" viewBox="0 0 140 34" role="img" aria-label="Trustpilot"><use href="#tp-logo"/></svg><span>from 24 reviews</span></span></span></p>
-      <p class="hero-disclaimer" id="hero-disc"><span class="ln"><span class="li">Independent consultancy. Not affiliated with any government, embassy or consulate, nor with VFS Global, who operate the Netherlands visa application centres in the UK. Official fees are paid directly to the relevant authority.</span></span></p>
-    </div>
+     </div>
 
-    <div class="enquiry glass" id="enquiry">
+      <div class="enquiry glass" id="enquiry">
       <p class="enq-title">Consultancy enquiry</p>
       <p class="enq-note">This is an enquiry form for our advisory service. It is not a visa application form and nothing is submitted to any consulate or visa centre.</p>
       <form class="enq-form" id="enquiry-form">
@@ -510,15 +498,29 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         </div>
         <label class="enq-terms"><input type="checkbox" id="e-terms" required><span>I have read and accept the <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms and Conditions</a>.</span></label>
         <button class="enq-submit" type="submit" id="enq-submit">Send your enquiry</button>
-        <p class="enq-foot">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. Nothing is submitted to any consulate or visa centre.<br>Details you send are handled as described in our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Replies the same working day, Monday to Saturday.</p>
-        <p class="enq-error" id="enq-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+        <p class="enq-foot">Sending goes straight to our enquiry inbox. Nothing is submitted to any consulate or visa centre.<br>Details you send are handled as described in our <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Replies the same working day, Monday to Saturday.</p>
+        <p class="enq-error" id="enq-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
       </form>
       <div class="enq-success" id="enq-success" hidden>
         <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
         <h3>Enquiry received</h3>
-        <p id="enq-success-text">Thanks — we reply the same working day, Monday to Saturday, with a straight answer.</p>
+        <p id="enq-success-text">Thanks. We reply the same working day, Monday to Saturday, with a straight answer.</p>
       </div>
     </div>
+
+     <div class="hero-copy-bottom">
+      <div class="hero-trust" id="hero-strip">
+        <ul class="trust-list">
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Registered in England, Companies House 16891200</span></span></li>
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>ICO registered ZC149216</span></span></li>
+          <li><span class="ln"><span class="li"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Replies the same working day, Monday to Saturday</span></span></li>
+        </ul>
+      </div>
+      <p class="tp-line tp-bottom" id="hero-tp"><span class="ln"><span class="li"><span>Rated</span><strong>4.5</strong><span>on</span><svg class="tp" viewBox="0 0 140 34" role="img" aria-label="Trustpilot"><use href="#tp-logo"/></svg><span>from 24 reviews</span></span></span></p>
+      <p class="hero-disclaimer" id="hero-disc"><span class="ln"><span class="li">Independent consultancy. Not affiliated with any government, embassy or consulate, nor with VFS Global, who operate the Netherlands visa application centres in the UK. Official fees are paid directly to the relevant authority.</span></span></p>
+    
+     </div>
+</div>
   </div>
 </section>
 
@@ -531,20 +533,21 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
 <!-- ============ BREADCRUMB ============ -->
 <section class="sec" id="need" aria-labelledby="need-title">
-<div class="advsplit">
-<div>
+<div class="advmedia">
+<div class="advmedia-content">
 <p class="eyebrow"><i></i>Who this is for</p>
 <h2 class="h2" id="need-title">
       <span class="ln"><span class="li">Do you actually need</span></span>
       <span class="ln"><span class="li">a Dutch visa?</span></span>
     </h2>
-</div>
-<div class="advsplit-body">
 <p class="body"><strong>If you hold a British passport, no.</strong> You can travel to the Netherlands and the rest of the Schengen area for up to 90 days in any 180-day period without a visa. This page is not for you. From October 2026 you will need an ETIAS travel authorisation, which is applied for online and is not a visa.</p>
 <p class="body"><strong>If you are a non-UK national living in Britain, it depends on your passport, not your UK status.</strong> If your nationality requires a Schengen visa, you need one, and indefinite leave to remain, a work visa, a student visa or an eVisa does not exempt you.</p>
 <p class="body">What your UK status does decide is <strong>where</strong> you apply. Because you live here, you apply from here.</p>
 <p class="body">Everything below concerns the <strong>short-stay Schengen visa</strong>, up to 90 days. Moving to the Netherlands to work or study is a different application under different rules.</p>
 </div>
+<figure class="advmedia-img">
+<img src="/assets/who-team.webp" alt="A Flypass adviser explaining who actually needs a Netherlands Schengen visa" width="1000" height="1506" loading="lazy">
+</figure>
 </div>
 </section>
 
@@ -567,7 +570,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <tbody>
         <tr><td>Official Schengen visa fee</td><td>The consulate, via the centre, on the day</td><td>EUR 90 adult &middot; EUR 45 child aged six to eleven &middot; free under six</td></tr>
         <tr><td>VFS Global service fee</td><td>VFS Global, on the day</td><td>Set and published by VFS Global; check their current figure when you book</td></tr>
-        <tr><td>Our consultancy fee, if you use us</td><td>Flypass Holidays</td><td>From £125, <a href="/#fees">confirmed in writing</a> before any work begins</td></tr>
+        <tr><td>Our consultancy fee, if you use us</td><td>Flypass Holidays</td><td>From £95, <a href="/#fees">confirmed in writing</a> before any work begins</td></tr>
       </tbody>
     </table></div>
 <div class="advnote-col">
@@ -596,13 +599,16 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec card" id="how" aria-labelledby="how-title">
-<div class="advwrap">
+<section class="sec" id="how" aria-labelledby="how-title">
+<div class="advsplit advsplit--sticky">
+<div class="advsplit-head">
 <p class="eyebrow"><i></i>The VFS route</p>
 <h2 class="h2" id="how-title">
       <span class="ln"><span class="li">How a Dutch</span></span>
       <span class="ln"><span class="li">application works</span></span>
     </h2>
+</div>
+<div class="advsplit-body">
 <div class="advcards advcards--4">
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 20.75c-5.38 0-9.75-4.37-9.75-9.75S5.62 1.25 11 1.25c.41 0 .75.34.75.75s-.34.75-.75.75c-4.55 0-8.25 3.7-8.25 8.25s3.7 8.25 8.25 8.25 8.25-3.7 8.25-8.25c0-.41.34-.75.75-.75s.75.34.75.75c0 5.38-4.37 9.75-9.75 9.75Z" fill="currentColor"/><path d="M20 5.75h-6c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h6c.41 0 .75.34.75.75s-.34.75-.75.75ZM17 8.75h-3c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h3c.41 0 .75.34.75.75s-.34.75-.75.75ZM20.161 22.79c-.08 0-.16-.01-.23-.02-.47-.06-1.32-.38-1.8-1.81-.25-.75-.16-1.5.25-2.07.41-.57 1.1-.89 1.89-.89 1.02 0 1.82.39 2.18 1.08.36.69.26 1.57-.31 2.42-.71 1.07-1.48 1.29-1.98 1.29Zm-.6-2.3c.17.52.41.78.57.8.16.02.46-.17.77-.62.29-.43.31-.74.24-.88s-.35-.29-.87-.29c-.31 0-.54.1-.67.27-.12.17-.14.43-.04.72Z" fill="currentColor"/></svg></span>
 <h3>1. Check on Netherlands Worldwide.</h3>
@@ -621,9 +627,10 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <p class="body">VFS Global runs Netherlands visa application centres in <strong>four</strong> UK cities: <strong>London, Manchester, Birmingham and Edinburgh</strong>. <strong>Birmingham is worth knowing about.</strong> Most Schengen countries run three UK centres or fewer, and the Midlands is often the gap. If you are in Birmingham, Coventry, Wolverhampton or anywhere across that region, the Netherlands is one of the few destinations that does not require a trip to London. VFS publishes the current addresses and opening hours on its Netherlands pages, so check them close to your date.</p>
 </div>
 </div>
+</div>
 </section>
 
-<section class="sec" id="embassy" aria-labelledby="embassy-title">
+<section class="sec card" id="embassy" aria-labelledby="embassy-title">
 <div class="advsplit">
 <div>
 <p class="eyebrow"><i></i>The other route</p>
@@ -641,7 +648,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec card" id="asks" aria-labelledby="asks-title">
+<section class="sec" id="asks" aria-labelledby="asks-title">
 <div class="advsplit">
 <div>
 <p class="eyebrow"><i></i>Documents</p>
@@ -664,7 +671,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec" id="schiphol" aria-labelledby="schiphol-title">
+<section class="sec card" id="schiphol" aria-labelledby="schiphol-title">
 <div class="advwrap">
 <p class="eyebrow"><i></i>Transit, not entry</p>
 <h2 class="h2" id="schiphol-title">
@@ -688,7 +695,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec card" id="multi" aria-labelledby="multi-title">
+<section class="sec" id="multi" aria-labelledby="multi-title">
 <div class="advsplit">
 <div>
 <p class="eyebrow"><i></i>The main destination rule</p>
@@ -698,7 +705,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     </h2>
 </div>
 <div class="advsplit-body">
-<p class="body">Apply to the Netherlands only if it is your <strong>main destination</strong>, meaning where you will spend the most nights. If more nights fall in <a href="/belgium-visa-uk">Belgium</a>, <a href="/germany-visa-uk">Germany</a> or France, the application goes to that country instead, even if you fly into Schiphol first. Where nights are split equally between two countries, it goes to the one you enter first.</p>
+<p class="body">Apply to the Netherlands only if it is your <strong>main destination</strong>, meaning where you will spend the most nights. If more nights fall in <a href="/belgium-visa-uk">Belgium</a>, Germany or France, the application goes to that country instead, even if you fly into Schiphol first. Where nights are split equally between two countries, it goes to the one you enter first.</p>
 <p class="body">This catches people out on Dutch trips specifically, for two reasons.</p>
 <ul class="blist">
       <li><strong>Schiphol is a natural arrival point</strong> for a wider European trip, and arriving somewhere is not the same as it being your main destination.</li>
@@ -709,7 +716,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec" id="trouble" aria-labelledby="trouble-title">
+<section class="sec card" id="trouble" aria-labelledby="trouble-title">
 <div class="advsplit">
 <div>
 <p class="eyebrow"><i></i>Casework patterns</p>
@@ -732,7 +739,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 </div>
 </section>
 
-<section class="sec card" id="help" aria-labelledby="help-title">
+<section class="sec" id="help" aria-labelledby="help-title">
 <div class="advwrap">
 <div class="advsplit">
 <div>
@@ -745,12 +752,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <div class="advsplit-body">
 <p class="body"><strong>What we cannot do.</strong> We cannot issue a visa, influence a decision, or obtain or accelerate an appointment. Anyone who tells you otherwise is describing something they do not control.</p>
 <p class="body"><strong>What we do.</strong> We confirm the Netherlands is the correct country before you spend anything, which on a Schiphol arrival is not a formality. We build your document set around your actual status in the UK. We draft your cover letter and itinerary so they reconcile with your bookings. We read your financial evidence the way an officer will. And we build your timeline on the figure the Dutch operator actually publishes rather than the one most guides quote. This is <a href="/advisory">what we prepare</a>.</p>
-<p class="body"><a href="/about-us">Abdul Mateen</a>, who founded the practice, reads the cases himself. Our fee starts from £125, confirmed in writing before any work begins.</p>
+<p class="body"><a href="/about-us">Abdul Mateen</a>, who founded the practice, reads the cases himself. Our fee starts from £95, confirmed in writing before any work begins.</p>
 <p class="body"><strong>And when you do not need us, we say so.</strong> A few days in Amsterdam, settled finances and time in hand is a straightforward application and plenty of people make it alone.</p>
 </div>
 </div>
 <div class="cta-row">
-      <button class="pill solid" type="button" data-focus-form>Ask about your Netherlands application
+      <button class="pill solid" type="button" data-focus-form>Request a consultation
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a class="pill outline" href="https://wa.me/447482788545" target="_blank" rel="noopener">Message us on WhatsApp
@@ -821,52 +828,56 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
     <div class="faq-list" id="faq-list">
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Do I need a visa for the Netherlands from the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>If you hold a British passport, no, not for stays up to 90 days in any 180-day period. From October 2026 you will need an ETIAS authorisation, which is not a visa. If you are a non-UK national living in Britain, it depends on your nationality, not on your UK status.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Are you a government or official visa service?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Is the Netherlands visa free for UK BRP holders?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>No. A UK biometric residence permit proves your right to live in Britain. It is not a Schengen visa and it does not give you visa-free entry to the Netherlands. If your nationality requires a Schengen visa, you need one regardless of your UK status. BRPs have also been replaced by the online eVisa, so most people now prove UK status with a share code rather than a card.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Do I need a visa for the Netherlands from the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>If you hold a British passport, no, not for stays up to 90 days in any 180-day period. From October 2026 you will need an ETIAS authorisation, which is not a visa. If you are a non-UK national living in Britain, it depends on your nationality, not on your UK status.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Can I visit Amsterdam with a UK BRP?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>Not on the BRP alone, unless your nationality is visa-exempt for the Schengen area. The BRP or your eVisa share code is one of the documents you show in support of a Schengen visa application, because it proves you are lawfully resident in the UK and expected back. It is not a substitute for the visa itself.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Is the Netherlands visa free for UK BRP holders?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>No. A UK biometric residence permit proves your right to live in Britain. It is not a Schengen visa and it does not give you visa-free entry to the Netherlands. If your nationality requires a Schengen visa, you need one regardless of your UK status. BRPs have also been replaced by the online eVisa, so most people now prove UK status with a share code rather than a card.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">How long does a Netherlands visa take?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>VFS Global publishes an average of 25 calendar days for Dutch applications, with a maximum of 45. That is longer than the 15 days most general Schengen guidance quotes. The appointment you attend beforehand is a separate wait and usually the longer one. <a href="/schengen-visa-processing-time">Our Schengen visa processing time page</a> sets out how the two fit together.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">Can I visit Amsterdam with a UK BRP?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>Not on the BRP alone, unless your nationality is visa-exempt for the Schengen area. The BRP or your eVisa share code is one of the documents you show in support of a Schengen visa application, because it proves you are lawfully resident in the UK and expected back. It is not a substitute for the visa itself.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">How much does a Netherlands visa cost from the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>EUR 90 for an adult and EUR 45 for a child aged six to eleven, free under six. VFS Global charges its own service fee on the day. If you use a consultancy that is a third and separate cost. Ours starts from £125.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">How long does a Netherlands visa take?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>VFS Global publishes an average of 25 calendar days for Dutch applications, with a maximum of 45. That is longer than the 15 days most general Schengen guidance quotes. The appointment you attend beforehand is a separate wait and usually the longer one. <a href="/schengen-visa-processing-time">Our Schengen visa processing time page</a> sets out how the two fit together.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Where do I apply for a Dutch visa in the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>Through VFS Global, which runs Netherlands visa application centres in London, Manchester, Birmingham and Edinburgh. A limited number of appointments are also available directly at the Netherlands embassy in London.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">How much does a Netherlands visa cost from the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>EUR 90 for an adult and EUR 45 for a child aged six to eleven, free under six. VFS Global charges its own service fee on the day. If you use a consultancy that is a third and separate cost. Ours starts from £95.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">Is there a visa centre in Birmingham?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>Yes. The Netherlands is one of the few Schengen countries with a UK centre in Birmingham, which makes it easier for applicants across the Midlands than most destinations.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">Where do I apply for a Dutch visa in the UK?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>Through VFS Global, which runs Netherlands visa application centres in London, Manchester, Birmingham and Edinburgh. A limited number of appointments are also available directly at the Netherlands embassy in London.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a8"><span class="fq-i">08</span><span class="fq-t">I am only changing planes at Schiphol. Do I need a visa?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a8" role="region"><div class="faq-a-in"><p>It depends on your nationality and on your connection. Staying airside may not require a Schengen visa, but some nationalities need an Airport Transit Visa even to do that. If you have to collect baggage or leave the terminal you are entering the Schengen area and the ordinary rules apply. Check your specific position before booking.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a8"><span class="fq-i">08</span><span class="fq-t">Is there a visa centre in Birmingham?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a8" role="region"><div class="faq-a-in"><p>Yes. The Netherlands is one of the few Schengen countries with a UK centre in Birmingham, which makes it easier for applicants across the Midlands than most destinations.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a9"><span class="fq-i">09</span><span class="fq-t">I am visiting the Netherlands and Belgium. Where do I apply?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a9" role="region"><div class="faq-a-in"><p>Wherever you will spend the most nights. Amsterdam and Brussels are under two hours apart so mixed trips are common, and the answer is frequently not the Netherlands. Where nights are equal, it goes to the country you enter first.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a9"><span class="fq-i">09</span><span class="fq-t">I am only changing planes at Schiphol. Do I need a visa?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a9" role="region"><div class="faq-a-in"><p>It depends on your nationality and on your connection. Staying airside may not require a Schengen visa, but some nationalities need an Airport Transit Visa even to do that. If you have to collect baggage or leave the terminal you are entering the Schengen area and the ordinary rules apply. Check your specific position before booking.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a10"><span class="fq-i">10</span><span class="fq-t">Is travel medical insurance mandatory?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a10" role="region"><div class="faq-a-in"><p>Yes. You need cover valid across the Schengen area for the whole of your stay, with a minimum of EUR 30,000. It is checked when you submit.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a10"><span class="fq-i">10</span><span class="fq-t">I am visiting the Netherlands and Belgium. Where do I apply?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a10" role="region"><div class="faq-a-in"><p>Wherever you will spend the most nights. Amsterdam and Brussels are under two hours apart so mixed trips are common, and the answer is frequently not the Netherlands. Where nights are equal, it goes to the country you enter first.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a11"><span class="fq-i">11</span><span class="fq-t">I have had a Schengen visa refusal before. Can you help?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a11" role="region"><div class="faq-a-in"><p>Yes. A previous refusal makes preparation more important, not less. The refusal notice states the grounds. We read those grounds, work out what was doubted, and rebuild the application to answer it rather than resubmitting the same file.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a11"><span class="fq-i">11</span><span class="fq-t">Is travel medical insurance mandatory?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a11" role="region"><div class="faq-a-in"><p>Yes. You need cover valid across the Schengen area for the whole of your stay, with a minimum of EUR 30,000. It is checked when you submit.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a12"><span class="fq-i">12</span><span class="fq-t">Do you guarantee a Dutch visa?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a12" role="region"><div class="faq-a-in"><p>No, and no honest agency can. Decisions are made solely by the Dutch authorities. What we control is the quality of what reaches them.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a12"><span class="fq-i">12</span><span class="fq-t">I have had a Schengen visa refusal before. Can you help?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a12" role="region"><div class="faq-a-in"><p>Yes. A previous refusal makes preparation more important, not less. The refusal notice states the grounds. We read those grounds, work out what was doubted, and rebuild the application to answer it rather than resubmitting the same file.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a13"><span class="fq-i">13</span><span class="fq-t">Do you guarantee a Dutch visa?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a13" role="region"><div class="faq-a-in"><p>No, and no honest agency can. Decisions are made solely by the Dutch authorities. What we control is the quality of what reaches them.</p></div></div>
     </div>
     </div>
   </div>
@@ -885,7 +896,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <p class="final-p">Tell us where you are going and when, including any connections and anywhere else in Europe you plan to be on the same trip. You will get a straight answer the same working day about whether the Netherlands is the right country to apply to, whether your timeline works, and whether your case needs us at all.</p>
     <div class="final-ctas" id="final-ctas">
       <button class="pill light" type="button" data-focus-form>
-        Ask about your Netherlands application
+        Request a consultation
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a class="pill ghost" href="https://wa.me/447482788545" target="_blank" rel="noopener">
@@ -913,21 +924,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/advisory">Advisory</a></li>
         <li><a href="/process">Our Process</a></li>
         <li><a href="/schengen-visa-processing-time">Processing Time</a></li>
+        <li><a href="/#services">Our Services</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/guides">Guides</a></li>
         <li><a href="/journal">Journal</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Our services">
-      <p class="f-h">Our Services</p>
-      <ul class="f-links">
-        <li><a href="/schengen-tourist-visa">Tourist Visa</a></li>
-        <li><a href="/schengen-business-visa">Business Visa</a></li>
-        <li><a href="/schengen-conference-visa">Business Conference Visa</a></li>
-        <li><a href="/schengen-medical-visa">Medical Treatment Visa</a></li>
-        <li><a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a></li>
-        <li><a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a></li>
+        <li><a href="/fees">Fees</a></li>
       </ul>
     </nav>
     <nav aria-label="Destinations">
@@ -938,8 +940,6 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/greece-visa-uk">Greece</a></li>
         <li><a href="/netherlands-visa-uk">Netherlands</a></li>
         <li><a href="/belgium-visa-uk">Belgium</a></li>
-        <li><a href="/italy-visa-uk">Italy</a></li>
-        <li><a href="/germany-visa-uk">Germany</a></li>
         <li><a href="/country">All 29 countries</a></li>
       </ul>
     </nav>
@@ -1005,7 +1005,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </nav>
       <div class="menu-bottom">
         <a class="pill light" href="/contact">
-          Contact Us
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <nav class="menu-social" aria-label="Social">
@@ -1024,7 +1024,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title-h">
     <div class="panel-head">
       <div>
-        <p class="eyebrow"><i></i>Start your application</p>
+        <p class="eyebrow"><i></i>Request a consultation</p>
         <h2 class="h2" id="modal-title-h"><span id="modal-title">
           <span class="ln"><span class="li">Tell us about</span></span>
           <span class="ln"><span class="li">your trip</span></span>
@@ -1046,18 +1046,18 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </div>
       <div class="field">
         <label for="f-msg">Where are you going, and when?</label>
-        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October — family of three, first Schengen application…"></textarea>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October, family of three, first Schengen application…"></textarea>
       </div>
-      <button class="submit-btn" type="submit" id="modal-submit">Start my application</button>
+      <button class="submit-btn" type="submit" id="modal-submit">Send my enquiry</button>
       <p class="modal-alt">Prefer to talk it through? <a href="https://wa.me/447482788545" target="_blank" rel="noopener">WhatsApp us: +44 7482 788545</a></p>
-      <p class="modal-note">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. We reply the same working day, Monday to Saturday — with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
-      <p class="modal-note enq-error" id="modal-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <p class="modal-note">Sending goes straight to our enquiry inbox. We reply the same working day, Monday to Saturday, with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
+      <p class="modal-note enq-error" id="modal-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </form>
 
     <div class="success" id="modal-success" hidden>
       <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Request received</h3>
-      <p id="success-text">Thanks — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
+      <p id="success-text">Thanks. We reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
       <button class="pill solid" type="button" id="modal-done">Done</button>
     </div>
   </div>

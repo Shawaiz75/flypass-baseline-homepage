@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17835680281"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17835680281');
+gtag('config', 'G-M2K7XD4KXD');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>France Visa Appointments: The New Allocation Queue | Flypass</title>
 <meta name="description" content="Since 1 August 2026 TLScontact allocates French short-stay visa appointments from a queue. How the new system works, the 24-hour window, and what to have ready.">
@@ -32,7 +41,7 @@
 <style>
 /* Onest, self-hosted. Two reasons it came off Google Fonts: the stylesheet was
    render-blocking on a third-party origin, and the swap from the fallback face
-   measured as the single cause of ALL remaining layout shift — blocking
+   measured as the single cause of ALL remaining layout shift: blocking
    fonts.gstatic.com took CLS from 0.28 to 0.00 on every page.
 
    font-display:optional means the browser uses the face only if it is ready
@@ -59,7 +68,7 @@
 .fl-statutory strong{font-weight:500;color:var(--ink)}
 .fl-statutory a{border-bottom:1px solid var(--ghost);transition:color .25s,border-color .25s}
 .fl-statutory a:hover{color:var(--brand);border-bottom-color:var(--brand)}
-/* The two halves are a legal disclosure and an independence statement — related,
+/* The two halves are a legal disclosure and an independence statement, related,
    but not one sentence. On a wide viewport they sit on one line separated by a
    rule; below that the second half drops to its own line. */
 .fl-sep{display:none}
@@ -68,7 +77,7 @@
 
 /* ---------- Key facts panel ----------
    Answer-first summary. Every row is a question someone actually types, with
-   the answer in the first clause — the format both a hurried reader and an
+   the answer in the first clause: the format both a hurried reader and an
    answer engine can lift without needing the paragraph around it. */
 .facts{background:var(--surface);border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3rem 1.25rem}
 @media (min-width:640px){.facts{padding:4.5rem 3rem}}
@@ -274,25 +283,13 @@
 </defs>
 </svg>
 
-<!-- Intro loader -->
-<div id="loader" aria-hidden="true">
-  <div class="lw"><svg class="logo ondark" viewBox="0 0 336 75" aria-hidden="true"><use href="#fp-logo"/></svg></div>
-  <div class="track"><div class="fill"></div></div>
-</div>
-<noscript><style>#loader{display:none}</style></noscript>
-<script>
-/* Failsafe: never trap the page behind the loader if the module script dies */
-setTimeout(function(){var l=document.getElementById('loader');
-if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentElement.classList.remove('lock');}},6500);
-</script>
-
 <div class="page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ TOP BAR ============ -->
 <header class="top-bar">
-  <a class="tb-brand" href="/" aria-label="Flypass Holidays — home">
+  <a class="tb-brand" href="/" aria-label="Flypass Holidays home page">
     <svg class="logo" viewBox="0 0 336 75" role="img" aria-label="Flypass Holidays"><use href="#fp-logo"/></svg>
   </a>
   <nav class="tb-nav" aria-label="Primary">
@@ -307,19 +304,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <a href="/schengen-visa-processing-time">Processing Time</a>
       </div>
     </div>
-    <div class="nav-item">
-      <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Our Services
-        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="drop-panel" role="menu" aria-label="Our services">
-        <a href="/schengen-tourist-visa">Tourist Visa</a>
-        <a href="/schengen-business-visa">Business Visa</a>
-        <a href="/schengen-conference-visa">Business Conference Visa</a>
-        <a href="/schengen-medical-visa">Medical Treatment Visa</a>
-        <a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a>
-        <a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a>
-      </div>
-    </div>
+    <a href="/#services">Our Services</a>
     <div class="nav-item has-mega">
       <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Destinations
         <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -327,7 +312,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <div class="mega-panel" role="menu" aria-label="Destinations">
         <div class="mega-head">
           <p class="mega-title">All 29 Schengen countries</p>
-          <p class="mega-note">One visa covers them all &mdash; your application goes to the consulate of your main destination.</p>
+          <p class="mega-note">One visa covers them all: your application goes to the consulate of your main destination.</p>
         </div>
         <div class="mega-grid">
           <a href="/country"><span class="fl">&#127462;&#127481;</span>Austria</a>
@@ -339,11 +324,11 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <a href="/country"><span class="fl">&#127466;&#127466;</span>Estonia</a>
           <a href="/country"><span class="fl">&#127467;&#127470;</span>Finland</a>
           <a href="/france-schengen-visa"><span class="fl">&#127467;&#127479;</span>France</a>
-          <a href="/germany-visa-uk"><span class="fl">&#127465;&#127466;</span>Germany</a>
+          <a href="/country"><span class="fl">&#127465;&#127466;</span>Germany</a>
           <a href="/greece-visa-uk"><span class="fl">&#127468;&#127479;</span>Greece</a>
           <a href="/country"><span class="fl">&#127469;&#127482;</span>Hungary</a>
           <a href="/country"><span class="fl">&#127470;&#127480;</span>Iceland</a>
-          <a href="/italy-visa-uk"><span class="fl">&#127470;&#127481;</span>Italy</a>
+          <a href="/country"><span class="fl">&#127470;&#127481;</span>Italy</a>
           <a href="/country"><span class="fl">&#127473;&#127483;</span>Latvia</a>
           <a href="/country"><span class="fl">&#127473;&#127470;</span>Liechtenstein</a>
           <a href="/country"><span class="fl">&#127473;&#127481;</span>Lithuania</a>
@@ -367,7 +352,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <a href="/journal">Journal</a>
   </nav>
   <div class="tb-right">
-    <a class="pill solid sm tb-cta" href="/contact">Contact Us</a>
+    <a class="pill solid sm tb-cta" href="/contact">Request a consultation</a>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"><span></span><span></span></span>
     </button>
@@ -377,7 +362,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <main id="main">
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="top" aria-label="Flypass Holidays — France Has Changed How Visa Appointments Work">
+<section class="hero" id="top" aria-label="Flypass Holidays: France Has Changed How Visa Appointments Work">
   <div class="hero-plate" aria-hidden="true">
     <div class="hero-plate-inner" id="hero-plate">
       <img src="/assets/france-slots.webp" alt="" fetchpriority="high" width="1200" height="679">
@@ -511,21 +496,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/advisory">Advisory</a></li>
         <li><a href="/process">Our Process</a></li>
         <li><a href="/schengen-visa-processing-time">Processing Time</a></li>
+        <li><a href="/#services">Our Services</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/guides">Guides</a></li>
         <li><a href="/journal">Journal</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Our services">
-      <p class="f-h">Our Services</p>
-      <ul class="f-links">
-        <li><a href="/schengen-tourist-visa">Tourist Visa</a></li>
-        <li><a href="/schengen-business-visa">Business Visa</a></li>
-        <li><a href="/schengen-conference-visa">Business Conference Visa</a></li>
-        <li><a href="/schengen-medical-visa">Medical Treatment Visa</a></li>
-        <li><a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a></li>
-        <li><a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a></li>
+        <li><a href="/fees">Fees</a></li>
       </ul>
     </nav>
     <nav aria-label="Destinations">
@@ -536,8 +512,6 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/greece-visa-uk">Greece</a></li>
         <li><a href="/netherlands-visa-uk">Netherlands</a></li>
         <li><a href="/belgium-visa-uk">Belgium</a></li>
-        <li><a href="/italy-visa-uk">Italy</a></li>
-        <li><a href="/germany-visa-uk">Germany</a></li>
         <li><a href="/country">All 29 countries</a></li>
       </ul>
     </nav>
@@ -603,7 +577,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </nav>
       <div class="menu-bottom">
         <a class="pill light" href="/contact">
-          Contact Us
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <nav class="menu-social" aria-label="Social">
@@ -622,7 +596,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title-h">
     <div class="panel-head">
       <div>
-        <p class="eyebrow"><i></i>Start your application</p>
+        <p class="eyebrow"><i></i>Request a consultation</p>
         <h2 class="h2" id="modal-title-h"><span id="modal-title">
           <span class="ln"><span class="li">Tell us about</span></span>
           <span class="ln"><span class="li">your trip</span></span>
@@ -644,18 +618,18 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </div>
       <div class="field">
         <label for="f-msg">Where are you going, and when?</label>
-        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October — family of three, first Schengen application…"></textarea>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October, family of three, first Schengen application…"></textarea>
       </div>
-      <button class="submit-btn" type="submit" id="modal-submit">Start my application</button>
+      <button class="submit-btn" type="submit" id="modal-submit">Send my enquiry</button>
       <p class="modal-alt">Prefer to talk it through? <a href="https://wa.me/447482788545" target="_blank" rel="noopener">WhatsApp us: +44 7482 788545</a></p>
-      <p class="modal-note">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. We reply the same working day, Monday to Saturday — with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
-      <p class="modal-note enq-error" id="modal-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <p class="modal-note">Sending goes straight to our enquiry inbox. We reply the same working day, Monday to Saturday, with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
+      <p class="modal-note enq-error" id="modal-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </form>
 
     <div class="success" id="modal-success" hidden>
       <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Request received</h3>
-      <p id="success-text">Thanks — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
+      <p id="success-text">Thanks. We reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
       <button class="pill solid" type="button" id="modal-done">Done</button>
     </div>
   </div>

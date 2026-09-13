@@ -63,8 +63,8 @@ main:focus,section:focus{outline:none}
 .logo.ondark{color:#fff;--holi:var(--brand-light)}
 
 /* ---------- Reveal primitives ---------- */
-.ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
-.li{display:block;transform:translateY(115%);opacity:0;
+.ln{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
+.li{display:inline-block;transform:translateY(115%);opacity:0;
     transition:transform var(--rd,950ms) var(--easeExpo) var(--dl,0ms),opacity var(--rd,950ms) var(--easeExpo) var(--dl,0ms)}
 .in .li{transform:none;opacity:1}
 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
@@ -89,8 +89,9 @@ main:focus,section:focus{outline:none}
 .eyebrow.light{color:rgba(255,255,255,.7)}
 .eyebrow.light i{background:var(--brand-light)}
 
-.h2{font-size:2.25rem;font-weight:500;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin-top:1rem;text-wrap:balance}
-@media (min-width:640px){.h2{font-size:3rem}}
+.h2{font-size:1.75rem;font-weight:500;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-top:1rem;text-wrap:balance}
+@media (min-width:640px){.h2{font-size:2.25rem}}
+@media (min-width:1024px){.h2{font-size:3rem}}
 .hword{display:block}
 
 .pill{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius-pill);padding:.875rem 1.75rem;font-size:.875rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;border:1px solid transparent;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
@@ -118,19 +119,6 @@ main:focus,section:focus{outline:none}
 .dots.light .dot.on i{background:#fff}
 
 .glass{border:1px solid rgba(255,255,255,.15);background:rgba(24,24,24,.55);box-shadow:0 1rem 2rem rgba(24,24,24,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:var(--radius-card)}
-
-/* ---------- Loader ---------- */
-#loader{position:fixed;inset:0;z-index:200;background:var(--brand-deep);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;will-change:transform}
-#loader .lw{display:grid;place-items:center}
-#loader .lw svg{width:15rem}
-#loader .track{width:10rem;height:1px;border-radius:var(--radius-pill);background:rgba(255,255,255,.2);overflow:hidden}
-#loader .fill{height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left}
-#loader.go .fill{transition:transform 1280ms var(--easeInOutCubic) 120ms;transform:scaleX(1)}
-#loader.exit{transition:transform 850ms var(--easeInOutCubic);transform:translateY(-105%)}
-@media (prefers-reduced-motion:reduce){
-  #loader.go .fill{transition-duration:80ms;transition-delay:0ms}
-  #loader.exit{transition:none;transform:translateY(-105%)}
-}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-card-lg);background:var(--brand-deep);color:#fff;display:flex;flex-direction:column;min-height:calc(100vh - 5.5rem);min-height:calc(100svh - 5.5rem)}
@@ -183,16 +171,22 @@ main:focus,section:focus{outline:none}
 @media (min-width:1024px){.top-bar .burger{display:none}}
 
 #hero-title{font-weight:500;margin-top:1rem}
-#hero-title .giant{display:block;font-size:10.5vw;line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
-@media (min-width:768px){#hero-title .giant{font-size:8vw}}
+#hero-title .giant{display:block;font-size:8vw;line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+@media (min-width:768px){#hero-title .giant{font-size:6vw}}
 @media (min-width:1024px){#hero-title .giant{font-size:4.6rem}}
 .hero-sub{margin-top:1rem;font-size:.95rem;line-height:1.65;max-width:40rem;color:rgba(255,255,255,.8)}
 .hero-wa{margin-top:1.5rem}
 .hero-trust{margin-top:1.75rem}
-.tp-line{font-size:1.05rem;color:#fff}
-.tp-line .li{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
-.tp-line strong{font-weight:500;font-size:1.5rem;letter-spacing:-.01em;line-height:1}
-.tp-line .tp{width:6.15rem;height:1.5rem;display:block;flex:none;transform:translateY(.28rem)}
+.tp-line{font-size:.82rem;color:#fff}
+.tp-line .li{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap}
+.tp-line strong{font-weight:500;font-size:1.1rem;letter-spacing:-.01em;line-height:1}
+.tp-line .tp{width:4.5rem;height:1.1rem;display:block;flex:none;transform:translateY(.22rem)}
+@media (min-width:640px){
+  .tp-line{font-size:1.05rem}
+  .tp-line .li{gap:.45rem}
+  .tp-line strong{font-size:1.5rem}
+  .tp-line .tp{width:6.15rem;height:1.5rem;transform:translateY(.28rem)}
+}
 .hero-left .tp-bottom{margin-top:2.5rem}
 @media (min-width:1024px){.hero-left .tp-bottom{margin-top:auto;padding-top:2rem}}
 .trust-list{display:grid;gap:.5rem;justify-items:start;text-align:left}
@@ -204,13 +198,29 @@ main:focus,section:focus{outline:none}
 @media (min-width:640px){.hero-split{padding:1.75rem 2.5rem 1.5rem}}
 @media (min-width:1024px){.hero-split{flex-direction:row;align-items:stretch;justify-content:space-between;gap:3rem;padding-top:1.25rem}}
 .hero-left{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-@media (min-width:1024px){.hero-left{flex:1}}
+/* Desktop swaps to an explicit 2-row, 2-column grid so the form (a mid-flow
+   child, kept there for mobile order: H1, copy, CTA, form, trust details)
+   still lands beside the text as a full-height right-hand column instead of
+   inline below the CTA. .hero-copy-top/-bottom split the text into the two
+   named rows; .enquiry spans both via the explicit row count (an implicit
+   "1/-1" span does not reach past the explicit grid, so the row count here
+   has to be named rather than inferred).
+
+   Scoped with :has() to pages that actually have the .hero-copy-top/-bottom
+   split — most heroes don't, and .hero-left's children would otherwise
+   auto-place alternating across the two grid columns with no override,
+   scrambling the copy left/right instead of stacking it. */
+@media (min-width:1024px){
+  .hero-left:has(> .hero-copy-top){display:grid;grid-template-columns:1fr 30rem;grid-template-rows:auto 1fr;column-gap:3rem;align-items:start}
+  .hero-copy-top{grid-column:1;grid-row:1}
+  .hero-copy-bottom{grid-column:1;grid-row:2;align-self:end}
+}
 
 /* Consultancy enquiry form (hero lead capture) */
-.enquiry{width:100%;padding:1.25rem;flex:none}
+.enquiry{width:100%;padding:1.25rem;flex:none;margin-top:1.75rem}
 @media (min-width:640px){.enquiry{padding:1.5rem}}
 @media (min-width:1024px){
-  .enquiry{width:30rem;padding:1.75rem;align-self:flex-end;margin:0 1.25rem 1rem 0}
+  .enquiry{width:100%;padding:1.75rem;grid-column:2;grid-row:1/3;align-self:end;margin:0 1.25rem 1rem 0}
   .enq-title{font-size:1.25rem}
   .enq-note{font-size:.75rem}
   .enq-grid{gap:.9rem}
@@ -259,7 +269,11 @@ main:focus,section:focus{outline:none}
    was the single largest layout shift on every page. */
 .mq{min-height:2.85rem}
 @media (min-width:640px){.mq{min-height:3.05rem}}
-.mq-track{display:flex;width:max-content;animation:mq-scroll 60s linear infinite}
+/* will-change forces this onto its own compositor layer up front — without it,
+   some WebKit builds don't start animating a bare `animation` declaration
+   until something else (like a hover on a child) forces a layer promotion,
+   so the strip can sit still until the user's cursor crosses it. */
+.mq-track{display:flex;width:max-content;animation:mq-scroll 60s linear infinite;will-change:transform}
 .mq:hover .mq-track{animation-play-state:paused}
 .mq-group{display:flex;gap:2.25rem;padding:.6rem 2.25rem .6rem 0}
 @keyframes mq-scroll{to{transform:translateX(-50%)}}
@@ -343,6 +357,28 @@ main:focus,section:focus{outline:none}
 .services-cta{margin-top:2.75rem;font-size:1.05rem;line-height:1.6;color:var(--ink)}
 .services-cta a{text-decoration:underline;text-underline-offset:.2em;color:var(--brand);font-weight:500}
 .services-cta a:hover{color:var(--brand-light)}
+
+/* ---------- Service cards ----------
+   aspect-ratio is taller on mobile (3/4 instead of 4/3) so the caption box has
+   room for the longest description (card 05) without clipping it; touch
+   devices show the button permanently (no hover), which needs the extra
+   height too. */
+.svc-grid{margin-top:2.25rem;display:grid;gap:1.1rem}
+@media (min-width:640px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+.svc-card{position:relative;border-radius:var(--radius-card);overflow:hidden;background:var(--surface);aspect-ratio:3/4;text-align:left;padding:0;will-change:transform}
+@media (min-width:640px){.svc-card{aspect-ratio:4/3}}
+.svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-cap{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;border-radius:.85rem;background:rgba(24,24,24,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:1.1rem 1.2rem;display:block;transition:background-color .35s ease,color .35s ease}
+.svc-name{display:block;font-size:1.2rem;font-weight:500;line-height:1.25}
+.svc-desc{display:block;margin-top:.5rem;font-size:.85rem;line-height:1.55;color:rgba(255,255,255,.88);transition:color .35s ease}
+.svc-btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:var(--radius-pill);background:var(--brand);color:#fff;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:0 1rem;max-height:0;margin-top:0;opacity:0;overflow:hidden;transform:translateY(6px);transition:max-height .35s ease,margin-top .35s ease,opacity .35s ease,transform .35s ease,padding .35s ease}
+.svc-btn svg{width:.85rem;height:.85rem;flex:none}
+.svc-card:hover .svc-cap{background:rgba(255,255,255,.96);color:var(--ink)}
+.svc-card:hover .svc-desc{color:var(--ink-soft)}
+.svc-card:hover .svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}
+@media (hover:none){.svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}}
+
 .rows{margin-top:3rem}
 .row{border-top:1px solid var(--hairline)}
 .row:last-child{border-bottom:1px solid var(--hairline)}
@@ -361,22 +397,6 @@ main:focus,section:focus{outline:none}
 .row-arrow .ico{display:grid;opacity:.55}
 .row-arrow svg{width:1.25rem;height:1.25rem}
 
-/* ---------- Service cards ---------- */
-.svc-grid{margin-top:2.25rem;display:grid;gap:1.1rem}
-@media (min-width:640px){.svc-grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1024px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
-.svc-card{position:relative;border-radius:var(--radius-card);overflow:hidden;background:var(--surface);aspect-ratio:4/3;text-align:left;padding:0;will-change:transform}
-.svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.svc-cap{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;border-radius:.85rem;background:rgba(24,24,24,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:1.1rem 1.2rem;display:block;transition:background-color .35s ease,color .35s ease}
-.svc-name{display:block;font-size:1.2rem;font-weight:500;line-height:1.25}
-.svc-desc{display:block;margin-top:.5rem;font-size:.85rem;line-height:1.55;color:rgba(255,255,255,.88);transition:color .35s ease}
-.svc-btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:var(--radius-pill);background:var(--brand);color:#fff;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:0 1rem;max-height:0;margin-top:0;opacity:0;overflow:hidden;transform:translateY(6px);transition:max-height .35s ease,margin-top .35s ease,opacity .35s ease,transform .35s ease,padding .35s ease}
-.svc-btn svg{width:.85rem;height:.85rem;flex:none}
-.svc-card:hover .svc-cap{background:rgba(255,255,255,.96);color:var(--ink)}
-.svc-card:hover .svc-desc{color:var(--ink-soft)}
-.svc-card:hover .svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}
-@media (hover:none){.svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}}
-
 /* ---------- Process (image bg, sticky step stack) ---------- */
 .process{position:relative;margin-top:.75rem}
 .process-wrap{position:relative}
@@ -390,6 +410,12 @@ main:focus,section:focus{outline:none}
 .process-sub{margin-top:1rem;font-size:1rem;color:rgba(255,255,255,.75)}
 .steps{display:grid;gap:1.25rem}
 @media (min-width:1024px){.steps{grid-template-columns:repeat(3,1fr)}}
+/* 4-item variant (e.g. process page's "after submission" stage) — same
+   step-card look, just an extra column at wide widths instead of a lone
+   4th card wrapping alone under a 3-column grid. */
+.steps--4{margin-top:2.5rem}
+@media (min-width:640px){.steps--4{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1280px){.steps--4{grid-template-columns:repeat(4,1fr)}}
 .step-card{border-radius:var(--radius-card);background:var(--surface-card);color:var(--ink);padding:1.75rem;box-shadow:0 1rem 2.5rem rgba(24,24,24,.25);will-change:transform}
 .step-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .step-ico{width:3.5rem;height:3.5rem;flex:none;border-radius:1rem;background:var(--surface);color:var(--brand);display:grid;place-items:center}
@@ -519,8 +545,8 @@ main:focus,section:focus{outline:none}
 .final-shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,24,24,.74),rgba(24,24,24,.58),rgba(24,24,24,.82))}
 .final-inner{max-width:56rem;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
 .final .h2{margin-top:0}
-@media (max-width:639px){.final .h2{font-size:2.6rem}}
-@media (min-width:768px){.final .h2{font-size:4.25rem}}
+@media (max-width:639px){.final .h2{font-size:2rem}}
+@media (min-width:768px){.final .h2{font-size:3rem}}
 .final-p{margin-top:1.5rem;font-size:1.05rem;line-height:1.7;color:rgba(255,255,255,.88);max-width:44rem}
 .final-p + .final-p{margin-top:1rem}
 .final-ctas{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
@@ -563,9 +589,10 @@ main:focus,section:focus{outline:none}
 .icon-btn{width:2.75rem;height:2.75rem;border-radius:var(--radius-pill);background:rgba(255,255,255,.15);display:grid;place-items:center;transition:background-color .25s}
 .icon-btn:hover{background:rgba(255,255,255,.25)}
 .icon-btn svg{width:1.1rem;height:1.1rem}
-.menu-nav{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
-.menu-nav a{display:block;font-size:2.5rem;font-weight:500;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;transition:color .25s}
-@media (min-width:640px){.menu-nav a{font-size:4.5rem}}
+.menu-nav{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.35rem}
+.menu-nav a{display:block;font-size:1.75rem;font-weight:500;letter-spacing:-.02em;line-height:1.15;text-transform:uppercase;transition:color .25s}
+@media (min-width:640px){.menu-nav a{font-size:2.5rem}}
+@media (min-width:768px){.menu-nav a{font-size:3rem}}
 .menu-nav a:hover{color:var(--brand-light)}
 .menu-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;display:flex;flex-direction:column;gap:1.25rem}
 @media (min-width:640px){.menu-bottom{flex-direction:row;justify-content:space-between;align-items:center}}
@@ -799,7 +826,10 @@ main:focus,section:focus{outline:none}
 .aico{display:grid;place-items:center;flex:none;width:2.2rem;height:2.2rem;border-radius:.65rem;background:var(--surface);color:var(--brand)}
 .aico svg{width:1.1rem;height:1.1rem}
 .advaudit{margin-top:1rem;display:flex;align-items:flex-start;gap:1rem;background:var(--surface-card);border-radius:var(--radius-card);padding:1.5rem 1.4rem}
-.advaudit .body{margin-top:0}
+/* !important: inner.css's .sec p.body carries one more type selector (p) than
+   this rule, so it wins on specificity alone and pushes the text 1rem below
+   the icon it's meant to sit flush with. */
+.advaudit .body{margin-top:0 !important}
 .advmedia{width:100%;display:grid;gap:2rem}
 @media (min-width:1024px){.advmedia{grid-template-columns:1fr 1fr;gap:4rem;align-items:center}}
 .advmedia-img{margin:0;position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/5}
@@ -816,3 +846,28 @@ main:focus,section:focus{outline:none}
 .advlede-col,.advnote-col{max-width:52rem}
 .advwrap .cta-row{margin-top:2.25rem}
 .advsplit-body .callout:first-child,.advsplit-body ul.blist:first-child,.advsplit-body ol.blist:first-child{margin-top:0}
+
+/* ===== 2026-09-14: sticky split head + in-column CTA + wide single-column head =====
+   A step sequence read as a plain list has nothing to visually orient against
+   as it scrolls; pinning the heading beside it (same mechanic as .faq-head)
+   keeps the section title in view for the whole scroll instead of vanishing
+   after the first screen. */
+@media (min-width:1024px){.advsplit--sticky .advsplit-head{position:sticky;top:6rem}}
+/* Cards nested in an advsplit's (narrower) body column read as a sequential
+   list, not a grid — stack them in one column regardless of viewport width,
+   since the column itself, not the viewport, is what's narrow here. */
+.advsplit-body .advcards{grid-template-columns:1fr!important}
+/* A cta-row that follows .advmedia as a sibling spans the full row, so it
+   visually sits under the image column as much as the text. Moving it inside
+   .advmedia-content keeps it under the text only. */
+.advmedia-content .cta-row{margin-top:2rem}
+
+/* Single-column section head (eyebrow + h2 + lede) split into heading-left /
+   lede-right on desktop, so the lede isn't stranded in a half-empty section. */
+.adv-head-split{display:grid;gap:1rem}
+@media (min-width:1024px){
+  .adv-head-split{grid-template-columns:1.05fr .95fr;column-gap:4rem;align-items:end}
+  .adv-head-split > .eyebrow{grid-column:1;grid-row:1}
+  .adv-head-split > .h2{grid-column:1;grid-row:2;margin-top:1rem}
+  .adv-head-split > .advlede-col{grid-column:2;grid-row:1/3;align-self:end;margin-top:0;max-width:none}
+}

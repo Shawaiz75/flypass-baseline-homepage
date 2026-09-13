@@ -63,8 +63,8 @@ main:focus,section:focus{outline:none}
 .logo.ondark{color:#fff;--holi:var(--brand-light)}
 
 /* ---------- Reveal primitives ---------- */
-.ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
-.li{display:block;transform:translateY(115%);opacity:0;
+.ln{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
+.li{display:inline-block;transform:translateY(115%);opacity:0;
     transition:transform var(--rd,950ms) var(--easeExpo) var(--dl,0ms),opacity var(--rd,950ms) var(--easeExpo) var(--dl,0ms)}
 .in .li{transform:none;opacity:1}
 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
@@ -89,8 +89,9 @@ main:focus,section:focus{outline:none}
 .eyebrow.light{color:rgba(255,255,255,.7)}
 .eyebrow.light i{background:var(--brand-light)}
 
-.h2{font-size:2.25rem;font-weight:500;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin-top:1rem;text-wrap:balance}
-@media (min-width:640px){.h2{font-size:3rem}}
+.h2{font-size:1.75rem;font-weight:500;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-top:1rem;text-wrap:balance}
+@media (min-width:640px){.h2{font-size:2.25rem}}
+@media (min-width:1024px){.h2{font-size:3rem}}
 .hword{display:block}
 
 .pill{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius-pill);padding:.875rem 1.75rem;font-size:.875rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;border:1px solid transparent;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
@@ -118,19 +119,6 @@ main:focus,section:focus{outline:none}
 .dots.light .dot.on i{background:#fff}
 
 .glass{border:1px solid rgba(255,255,255,.15);background:rgba(24,24,24,.55);box-shadow:0 1rem 2rem rgba(24,24,24,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:var(--radius-card)}
-
-/* ---------- Loader ---------- */
-#loader{position:fixed;inset:0;z-index:200;background:var(--brand-deep);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;will-change:transform}
-#loader .lw{display:grid;place-items:center}
-#loader .lw svg{width:15rem}
-#loader .track{width:10rem;height:1px;border-radius:var(--radius-pill);background:rgba(255,255,255,.2);overflow:hidden}
-#loader .fill{height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left}
-#loader.go .fill{transition:transform 1280ms var(--easeInOutCubic) 120ms;transform:scaleX(1)}
-#loader.exit{transition:transform 850ms var(--easeInOutCubic);transform:translateY(-105%)}
-@media (prefers-reduced-motion:reduce){
-  #loader.go .fill{transition-duration:80ms;transition-delay:0ms}
-  #loader.exit{transition:none;transform:translateY(-105%)}
-}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-card-lg);background:var(--brand-deep);color:#fff;display:flex;flex-direction:column;min-height:calc(100vh - 5.5rem);min-height:calc(100svh - 5.5rem)}
@@ -183,16 +171,22 @@ main:focus,section:focus{outline:none}
 @media (min-width:1024px){.top-bar .burger{display:none}}
 
 #hero-title{font-weight:500;margin-top:1rem}
-#hero-title .giant{display:block;font-size:10.5vw;line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
-@media (min-width:768px){#hero-title .giant{font-size:8vw}}
+#hero-title .giant{display:block;font-size:8vw;line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+@media (min-width:768px){#hero-title .giant{font-size:6vw}}
 @media (min-width:1024px){#hero-title .giant{font-size:4.6rem}}
 .hero-sub{margin-top:1rem;font-size:.95rem;line-height:1.65;max-width:40rem;color:rgba(255,255,255,.8)}
 .hero-wa{margin-top:1.5rem}
 .hero-trust{margin-top:1.75rem}
-.tp-line{font-size:1.05rem;color:#fff}
-.tp-line .li{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
-.tp-line strong{font-weight:500;font-size:1.5rem;letter-spacing:-.01em;line-height:1}
-.tp-line .tp{width:6.15rem;height:1.5rem;display:block;flex:none;transform:translateY(.28rem)}
+.tp-line{font-size:.82rem;color:#fff}
+.tp-line .li{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap}
+.tp-line strong{font-weight:500;font-size:1.1rem;letter-spacing:-.01em;line-height:1}
+.tp-line .tp{width:4.5rem;height:1.1rem;display:block;flex:none;transform:translateY(.22rem)}
+@media (min-width:640px){
+  .tp-line{font-size:1.05rem}
+  .tp-line .li{gap:.45rem}
+  .tp-line strong{font-size:1.5rem}
+  .tp-line .tp{width:6.15rem;height:1.5rem;transform:translateY(.28rem)}
+}
 .hero-left .tp-bottom{margin-top:2.5rem}
 @media (min-width:1024px){.hero-left .tp-bottom{margin-top:auto;padding-top:2rem}}
 .trust-list{display:grid;gap:.5rem;justify-items:start;text-align:left}
@@ -259,7 +253,11 @@ main:focus,section:focus{outline:none}
    was the single largest layout shift on every page. */
 .mq{min-height:2.85rem}
 @media (min-width:640px){.mq{min-height:3.05rem}}
-.mq-track{display:flex;width:max-content;animation:mq-scroll 60s linear infinite}
+/* will-change forces this onto its own compositor layer up front — without it,
+   some WebKit builds don't start animating a bare `animation` declaration
+   until something else (like a hover on a child) forces a layer promotion,
+   so the strip can sit still until the user's cursor crosses it. */
+.mq-track{display:flex;width:max-content;animation:mq-scroll 60s linear infinite;will-change:transform}
 .mq:hover .mq-track{animation-play-state:paused}
 .mq-group{display:flex;gap:2.25rem;padding:.6rem 2.25rem .6rem 0}
 @keyframes mq-scroll{to{transform:translateX(-50%)}}
@@ -337,12 +335,6 @@ main:focus,section:focus{outline:none}
 @media (min-width:640px){.trust-controls{margin-top:6rem}}
 
 /* ---------- Services ---------- */
-.services{background:var(--background);padding:3.5rem 1.5rem 4rem}
-@media (min-width:640px){.services{padding:4.5rem 2.5rem 5rem}}
-.services-intro{margin-top:1.5rem;font-size:1.05rem;line-height:1.6;color:var(--ink-soft);max-width:38rem}
-.services-cta{margin-top:2.75rem;font-size:1.05rem;line-height:1.6;color:var(--ink)}
-.services-cta a{text-decoration:underline;text-underline-offset:.2em;color:var(--brand);font-weight:500}
-.services-cta a:hover{color:var(--brand-light)}
 .rows{margin-top:3rem}
 .row{border-top:1px solid var(--hairline)}
 .row:last-child{border-bottom:1px solid var(--hairline)}
@@ -361,21 +353,6 @@ main:focus,section:focus{outline:none}
 .row-arrow .ico{display:grid;opacity:.55}
 .row-arrow svg{width:1.25rem;height:1.25rem}
 
-/* ---------- Service cards ---------- */
-.svc-grid{margin-top:2.25rem;display:grid;gap:1.1rem}
-@media (min-width:640px){.svc-grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1024px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
-.svc-card{position:relative;border-radius:var(--radius-card);overflow:hidden;background:var(--surface);aspect-ratio:4/3;text-align:left;padding:0;will-change:transform}
-.svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.svc-cap{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;border-radius:.85rem;background:rgba(24,24,24,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;padding:1.1rem 1.2rem;display:block;transition:background-color .35s ease,color .35s ease}
-.svc-name{display:block;font-size:1.2rem;font-weight:500;line-height:1.25}
-.svc-desc{display:block;margin-top:.5rem;font-size:.85rem;line-height:1.55;color:rgba(255,255,255,.88);transition:color .35s ease}
-.svc-btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:var(--radius-pill);background:var(--brand);color:#fff;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:0 1rem;max-height:0;margin-top:0;opacity:0;overflow:hidden;transform:translateY(6px);transition:max-height .35s ease,margin-top .35s ease,opacity .35s ease,transform .35s ease,padding .35s ease}
-.svc-btn svg{width:.85rem;height:.85rem;flex:none}
-.svc-card:hover .svc-cap{background:rgba(255,255,255,.96);color:var(--ink)}
-.svc-card:hover .svc-desc{color:var(--ink-soft)}
-.svc-card:hover .svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}
-@media (hover:none){.svc-btn{max-height:3rem;margin-top:.85rem;opacity:1;transform:none;padding:.55rem 1rem}}
 
 /* ---------- Process (image bg, sticky step stack) ---------- */
 .process{position:relative;margin-top:.75rem}
@@ -482,6 +459,20 @@ main:focus,section:focus{outline:none}
 .safe-card h3{margin-top:1.25rem;font-size:1.15rem;font-weight:500}
 .safe-card p{margin-top:.6rem;font-size:.92rem;line-height:1.7;color:var(--ink-soft)}
 
+/* ---------- Why applicants feel safe: image + copy split ---------- */
+.safe-split{display:grid;gap:2rem}
+@media (min-width:1024px){.safe-split{grid-template-columns:1fr 1fr;gap:4rem;align-items:center}}
+.safe-img{margin:0;position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/5}
+@media (min-width:1024px){.safe-img{aspect-ratio:auto;min-height:24rem}}
+.safe-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.safe-content{min-width:0}
+.safe-list{margin-top:2rem;display:grid;gap:1.6rem}
+.safe-point{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.safe-point h3{font-size:1rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
+.safe-point p{margin-top:.4rem;font-size:.92rem;line-height:1.7;color:var(--ink-soft)}
+.safe-point .safe-ico{width:2.6rem;height:2.6rem;border-radius:.8rem;background:var(--surface-card);color:var(--brand);display:grid;place-items:center;flex:none}
+.safe-point .safe-ico svg{width:1.2rem;height:1.2rem}
+
 /* ---------- FAQ ---------- */
 .faq{background:var(--background);padding:3.5rem 1.5rem 4rem}
 @media (min-width:640px){.faq{padding:5rem 2.5rem}}
@@ -517,8 +508,8 @@ main:focus,section:focus{outline:none}
 .final-shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,24,24,.74),rgba(24,24,24,.58),rgba(24,24,24,.82))}
 .final-inner{max-width:56rem;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
 .final .h2{margin-top:0}
-@media (max-width:639px){.final .h2{font-size:2.6rem}}
-@media (min-width:768px){.final .h2{font-size:4.25rem}}
+@media (max-width:639px){.final .h2{font-size:2rem}}
+@media (min-width:768px){.final .h2{font-size:3rem}}
 .final-p{margin-top:1.5rem;font-size:1.05rem;line-height:1.7;color:rgba(255,255,255,.88);max-width:44rem}
 .final-p + .final-p{margin-top:1rem}
 .final-ctas{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
@@ -561,9 +552,10 @@ main:focus,section:focus{outline:none}
 .icon-btn{width:2.75rem;height:2.75rem;border-radius:var(--radius-pill);background:rgba(255,255,255,.15);display:grid;place-items:center;transition:background-color .25s}
 .icon-btn:hover{background:rgba(255,255,255,.25)}
 .icon-btn svg{width:1.1rem;height:1.1rem}
-.menu-nav{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
-.menu-nav a{display:block;font-size:2.5rem;font-weight:500;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;transition:color .25s}
-@media (min-width:640px){.menu-nav a{font-size:4.5rem}}
+.menu-nav{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.35rem}
+.menu-nav a{display:block;font-size:1.75rem;font-weight:500;letter-spacing:-.02em;line-height:1.15;text-transform:uppercase;transition:color .25s}
+@media (min-width:640px){.menu-nav a{font-size:2.5rem}}
+@media (min-width:768px){.menu-nav a{font-size:3rem}}
 .menu-nav a:hover{color:var(--brand-light)}
 .menu-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;display:flex;flex-direction:column;gap:1.25rem}
 @media (min-width:640px){.menu-bottom{flex-direction:row;justify-content:space-between;align-items:center}}
@@ -734,3 +726,13 @@ main:focus,section:focus{outline:none}
 .fact-ico{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:.85rem;
   background:var(--surface-card);color:var(--brand)}
 .fact-ico svg{width:1.25rem;height:1.25rem}
+
+/* ---------- Split head: heading left, lede right (avoids a narrow single
+   column stranded in a wide section) ---------- */
+.facts--split .facts-head{max-width:none;display:grid;gap:1rem}
+@media (min-width:1024px){
+  .facts--split .facts-head{grid-template-columns:1.05fr .95fr;column-gap:4rem;align-items:end}
+  .facts--split .facts-head .eyebrow{grid-column:1;grid-row:1}
+  .facts--split .facts-head .h2{grid-column:1;grid-row:2;margin-top:1rem}
+  .facts--split .facts-head .facts-lede{grid-column:2;grid-row:1/3;align-self:end;margin-top:0;max-width:none}
+}

@@ -2,6 +2,15 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17835680281"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17835680281');
+gtag('config', 'G-M2K7XD4KXD');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Write a Schengen Visa Cover Letter (UK Guide)</title>
 <meta name="description" content="What a visa officer actually reads your Schengen cover letter for, what to include, a worked example, and the honest limits. Written for UK applicants.">
@@ -32,7 +41,7 @@
 <style>
 /* Onest, self-hosted. Two reasons it came off Google Fonts: the stylesheet was
    render-blocking on a third-party origin, and the swap from the fallback face
-   measured as the single cause of ALL remaining layout shift — blocking
+   measured as the single cause of ALL remaining layout shift: blocking
    fonts.gstatic.com took CLS from 0.28 to 0.00 on every page.
 
    font-display:optional means the browser uses the face only if it is ready
@@ -59,7 +68,7 @@
 .fl-statutory strong{font-weight:500;color:var(--ink)}
 .fl-statutory a{border-bottom:1px solid var(--ghost);transition:color .25s,border-color .25s}
 .fl-statutory a:hover{color:var(--brand);border-bottom-color:var(--brand)}
-/* The two halves are a legal disclosure and an independence statement — related,
+/* The two halves are a legal disclosure and an independence statement, related,
    but not one sentence. On a wide viewport they sit on one line separated by a
    rule; below that the second half drops to its own line. */
 .fl-sep{display:none}
@@ -68,7 +77,7 @@
 
 /* ---------- Key facts panel ----------
    Answer-first summary. Every row is a question someone actually types, with
-   the answer in the first clause — the format both a hurried reader and an
+   the answer in the first clause: the format both a hurried reader and an
    answer engine can lift without needing the paragraph around it. */
 .facts{background:var(--surface);border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3rem 1.25rem}
 @media (min-width:640px){.facts{padding:4.5rem 3rem}}
@@ -203,6 +212,14 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Are you a government or official visa service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do I need a cover letter for my Schengen visa application?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -298,25 +315,13 @@
 </defs>
 </svg>
 
-<!-- Intro loader -->
-<div id="loader" aria-hidden="true">
-  <div class="lw"><svg class="logo ondark" viewBox="0 0 336 75" aria-hidden="true"><use href="#fp-logo"/></svg></div>
-  <div class="track"><div class="fill"></div></div>
-</div>
-<noscript><style>#loader{display:none}</style></noscript>
-<script>
-/* Failsafe: never trap the page behind the loader if the module script dies */
-setTimeout(function(){var l=document.getElementById('loader');
-if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentElement.classList.remove('lock');}},6500);
-</script>
-
 <div class="page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ TOP BAR ============ -->
 <header class="top-bar">
-  <a class="tb-brand" href="/" aria-label="Flypass Holidays — home">
+  <a class="tb-brand" href="/" aria-label="Flypass Holidays home page">
     <svg class="logo" viewBox="0 0 336 75" role="img" aria-label="Flypass Holidays"><use href="#fp-logo"/></svg>
   </a>
   <nav class="tb-nav" aria-label="Primary">
@@ -331,19 +336,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <a href="/schengen-visa-processing-time">Processing Time</a>
       </div>
     </div>
-    <div class="nav-item">
-      <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Our Services
-        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="drop-panel" role="menu" aria-label="Our services">
-        <a href="/schengen-tourist-visa">Tourist Visa</a>
-        <a href="/schengen-business-visa">Business Visa</a>
-        <a href="/schengen-conference-visa">Business Conference Visa</a>
-        <a href="/schengen-medical-visa">Medical Treatment Visa</a>
-        <a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a>
-        <a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a>
-      </div>
-    </div>
+    <a href="/#services">Our Services</a>
     <div class="nav-item has-mega">
       <button class="nav-link" type="button" aria-haspopup="true" aria-expanded="false">Destinations
         <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -351,7 +344,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <div class="mega-panel" role="menu" aria-label="Destinations">
         <div class="mega-head">
           <p class="mega-title">All 29 Schengen countries</p>
-          <p class="mega-note">One visa covers them all &mdash; your application goes to the consulate of your main destination.</p>
+          <p class="mega-note">One visa covers them all: your application goes to the consulate of your main destination.</p>
         </div>
         <div class="mega-grid">
           <a href="/country"><span class="fl">&#127462;&#127481;</span>Austria</a>
@@ -363,11 +356,11 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
           <a href="/country"><span class="fl">&#127466;&#127466;</span>Estonia</a>
           <a href="/country"><span class="fl">&#127467;&#127470;</span>Finland</a>
           <a href="/france-schengen-visa"><span class="fl">&#127467;&#127479;</span>France</a>
-          <a href="/germany-visa-uk"><span class="fl">&#127465;&#127466;</span>Germany</a>
+          <a href="/country"><span class="fl">&#127465;&#127466;</span>Germany</a>
           <a href="/greece-visa-uk"><span class="fl">&#127468;&#127479;</span>Greece</a>
           <a href="/country"><span class="fl">&#127469;&#127482;</span>Hungary</a>
           <a href="/country"><span class="fl">&#127470;&#127480;</span>Iceland</a>
-          <a href="/italy-visa-uk"><span class="fl">&#127470;&#127481;</span>Italy</a>
+          <a href="/country"><span class="fl">&#127470;&#127481;</span>Italy</a>
           <a href="/country"><span class="fl">&#127473;&#127483;</span>Latvia</a>
           <a href="/country"><span class="fl">&#127473;&#127470;</span>Liechtenstein</a>
           <a href="/country"><span class="fl">&#127473;&#127481;</span>Lithuania</a>
@@ -391,7 +384,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     <a href="/journal">Journal</a>
   </nav>
   <div class="tb-right">
-    <a class="pill solid sm tb-cta" href="/contact">Contact Us</a>
+    <a class="pill solid sm tb-cta" href="/contact">Request a consultation</a>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"><span></span><span></span></span>
     </button>
@@ -528,7 +521,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       <li><strong>Who you are.</strong> Full name as it appears in your passport, date of birth, passport number, nationality, and your address in the UK.</li>
       <li><strong>Your status in the UK.</strong> Your visa or leave to remain, and when it expires. See the section below on why this matters more than people expect.</li>
       <li><strong>Where you are applying and why there.</strong> Name the consulate and state which country is your main destination.</li>
-      <li><strong>The purpose of the trip.</strong> One clear sentence. <a href="/schengen-tourist-visa">Tourism</a>, business, visiting family. Not three purposes at once.</li>
+      <li><strong>The purpose of the trip.</strong> One clear sentence. Tourism, business, visiting family. Not three purposes at once.</li>
       <li><strong>Exact dates.</strong> Entry and exit, matching your flight reservations precisely.</li>
       <li><strong>Where you will be.</strong> A city by city outline with your accommodation. It does not need to be elaborate. It needs to match your bookings.</li>
       <li><strong>How it is funded.</strong> Your own savings, your salary, a sponsor. If a sponsor, say who they are and what your relationship is.</li>
@@ -614,7 +607,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
     </h2>
 <div class="advcards advcards--6">
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.54 19.52c-.61 0-1.18-.21-1.59-.6-.52-.49-.77-1.23-.68-2.03l.37-3.24c.07-.61.44-1.42.87-1.86l8.21-8.69c2.05-2.17 4.19-2.23 6.36-.18s2.23 4.19.18 6.36l-8.21 8.69c-.42.45-1.2.87-1.81.97l-3.22.55c-.17.01-.32.03-.48.03ZM15.93 2.91c-.77 0-1.44.48-2.12 1.2l-8.21 8.7c-.2.21-.43.71-.47 1l-.37 3.24c-.04.33.04.6.22.77.18.17.45.23.78.18l3.22-.55c.29-.05.77-.31.97-.52l8.21-8.69C19.4 6.92 19.85 5.7 18.04 4c-.8-.77-1.49-1.09-2.11-1.09Z" fill="currentColor"/><path d="M17.34 10.949h-.07a6.86 6.86 0 0 1-6.11-5.78c-.06-.41.22-.79.63-.86.41-.06.79.22.86.63a5.372 5.372 0 0 0 4.78 4.52c.41.04.71.41.67.82-.05.38-.38.67-.76.67ZM21 22.75H3c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h18c.41 0 .75.34.75.75s-.34.75-.75.75Z" fill="currentColor"/></svg></span>
-<h3><a href="/schengen-family-visit-visa">Visiting family or friends</a>.</h3>
+<h3>Visiting family or friends.</h3>
 <p>Say who they are and what your relationship is. If they are hosting you, their invitation letter and proof of their address do the accommodation work, and your letter should point at them rather than repeat them.</p></div>
 <div class="advcard"><span class="aico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.999 14.171c-2.13 0-3.87-1.73-3.87-3.87s1.74-3.86 3.87-3.86 3.87 1.73 3.87 3.87-1.74 3.86-3.87 3.86Zm0-6.23c-1.3 0-2.37 1.06-2.37 2.37s1.06 2.37 2.37 2.37 2.37-1.06 2.37-2.37-1.07-2.37-2.37-2.37Z" fill="currentColor"/><path d="M12.002 22.76a5.97 5.97 0 0 1-4.13-1.67c-2.95-2.84-6.21-7.37-4.98-12.76 1.11-4.89 5.38-7.08 9.11-7.08h.01c3.73 0 8 2.19 9.11 7.09 1.22 5.39-2.04 9.91-4.99 12.75a5.97 5.97 0 0 1-4.13 1.67Zm0-20.01c-2.91 0-6.65 1.55-7.64 5.91-1.08 4.71 1.88 8.77 4.56 11.34a4.425 4.425 0 0 0 6.17 0c2.67-2.57 5.63-6.63 4.57-11.34-1-4.36-4.75-5.91-7.66-5.91Z" fill="currentColor"/></svg></span>
 <h3>A multi-country trip.</h3>
@@ -688,28 +681,32 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 
     <div class="faq-list" id="faq-list">
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Do I need a cover letter for my Schengen visa application?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>Usually it is not formally required and your application will be accepted without one. You should still include it. It is the only document where you explain how everything else fits together, and it costs nothing but an hour.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1"><span class="fq-i">01</span><span class="fq-t">Are you a government or official visa service?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a1" role="region"><div class="faq-a-in"><p>No. Flypass Holidays Limited is a private consultancy registered in England and Wales, company number 16891200. We are not affiliated with any government, embassy or consulate, nor with VFS Global, TLScontact, BLS International or Global Visa Center World. We cannot issue a visa and we cannot influence a decision.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">What should a Schengen visa cover letter include?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>Who you are, your status in the UK, which consulate you are applying to and why, the purpose of the trip, exact dates matching your reservations, where you will stay, how the trip is funded, why you will return, a short list of enclosed documents, and your signature. One page is enough.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2"><span class="fq-i">02</span><span class="fq-t">Do I need a cover letter for my Schengen visa application?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a2" role="region"><div class="faq-a-in"><p>Usually it is not formally required and your application will be accepted without one. You should still include it. It is the only document where you explain how everything else fits together, and it costs nothing but an hour.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">Who do I address a Schengen visa cover letter to?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>The consulate of <a href="/country">your main destination</a>, meaning the Schengen country where you will spend the most nights. If nights are equal between two countries, address it to the one you will enter first. “To the Visa Officer, Consulate General of [country], London” is sufficient.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3"><span class="fq-i">03</span><span class="fq-t">What should a Schengen visa cover letter include?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a3" role="region"><div class="faq-a-in"><p>Who you are, your status in the UK, which consulate you are applying to and why, the purpose of the trip, exact dates matching your reservations, where you will stay, how the trip is funded, why you will return, a short list of enclosed documents, and your signature. One page is enough.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">Do I need a letter from my employer as well?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>They are different documents and you generally want both. Your employer's letter confirms your job, your salary and your approved leave dates. Your cover letter explains the trip. Make certain the dates and job title in both match exactly, because a contradiction between them is one of the most common avoidable problems in a file.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4"><span class="fq-i">04</span><span class="fq-t">Who do I address a Schengen visa cover letter to?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a4" role="region"><div class="faq-a-in"><p>The consulate of <a href="/country">your main destination</a>, meaning the Schengen country where you will spend the most nights. If nights are equal between two countries, address it to the one you will enter first. “To the Visa Officer, Consulate General of [country], London” is sufficient.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">Can I just use a template?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>You can start from one, and the example above is there for that. But a letter that has clearly been filled in rather than written tells the officer nothing, and the parts that matter most, your specific finances, your specific ties, your specific reason for travelling, are exactly the parts a template leaves blank.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5"><span class="fq-i">05</span><span class="fq-t">Do I need a letter from my employer as well?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a5" role="region"><div class="faq-a-in"><p>They are different documents and you generally want both. Your employer's letter confirms your job, your salary and your approved leave dates. Your cover letter explains the trip. Make certain the dates and job title in both match exactly, because a contradiction between them is one of the most common avoidable problems in a file.</p></div></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">How long should it be?</span><span class="fq-x" aria-hidden="true"></span></button>
-      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>One page. Two at the absolute most. It is a covering letter, not a submission.</p></div></div>
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a6"><span class="fq-i">06</span><span class="fq-t">Can I just use a template?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a6" role="region"><div class="faq-a-in"><p>You can start from one, and the example above is there for that. But a letter that has clearly been filled in rather than written tells the officer nothing, and the parts that matter most, your specific finances, your specific ties, your specific reason for travelling, are exactly the parts a template leaves blank.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a7"><span class="fq-i">07</span><span class="fq-t">How long should it be?</span><span class="fq-x" aria-hidden="true"></span></button>
+      <div class="faq-a" id="faq-a7" role="region"><div class="faq-a-in"><p>One page. Two at the absolute most. It is a covering letter, not a submission.</p></div></div>
     </div>
     </div>
   </div>
@@ -728,7 +725,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
 <div class="advsplit-body">
 <p class="body">Most people reading this will write a perfectly good letter and get their visa. If that is you, good luck, and you do not need us.</p>
 <p class="body">Some people will get partway through and realise the letter is not what is worrying them. A refusal already on the record. A trip crossing three countries where the main destination is genuinely arguable. Self-employment, or income that does not look the way an officer expects. A deadline that is tighter than the process allows.</p>
-<p class="body">If that is closer to your situation, <a href="/advisory">we prepare Schengen applications</a> for non-UK nationals living in the UK, and the fee starts from £125. Tell us the shape of your case and you will get a straight answer about whether it needs us, including when the answer is no.</p>
+<p class="body">If that is closer to your situation, <a href="/advisory">we prepare Schengen applications</a> for non-UK nationals living in the UK, and the fee starts from £95. Tell us the shape of your case and you will get a straight answer about whether it needs us, including when the answer is no.</p>
 </div>
 </div>
 <div class="cta-row">
@@ -806,21 +803,12 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/advisory">Advisory</a></li>
         <li><a href="/process">Our Process</a></li>
         <li><a href="/schengen-visa-processing-time">Processing Time</a></li>
+        <li><a href="/#services">Our Services</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/guides">Guides</a></li>
         <li><a href="/journal">Journal</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Our services">
-      <p class="f-h">Our Services</p>
-      <ul class="f-links">
-        <li><a href="/schengen-tourist-visa">Tourist Visa</a></li>
-        <li><a href="/schengen-business-visa">Business Visa</a></li>
-        <li><a href="/schengen-conference-visa">Business Conference Visa</a></li>
-        <li><a href="/schengen-medical-visa">Medical Treatment Visa</a></li>
-        <li><a href="/schengen-family-visit-visa">Family &amp; Friend Visit Visa</a></li>
-        <li><a href="/schengen-eu-family-member-visa">EU Family Member Visit Visa</a></li>
+        <li><a href="/fees">Fees</a></li>
       </ul>
     </nav>
     <nav aria-label="Destinations">
@@ -831,8 +819,6 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
         <li><a href="/greece-visa-uk">Greece</a></li>
         <li><a href="/netherlands-visa-uk">Netherlands</a></li>
         <li><a href="/belgium-visa-uk">Belgium</a></li>
-        <li><a href="/italy-visa-uk">Italy</a></li>
-        <li><a href="/germany-visa-uk">Germany</a></li>
         <li><a href="/country">All 29 countries</a></li>
       </ul>
     </nav>
@@ -898,7 +884,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </nav>
       <div class="menu-bottom">
         <a class="pill light" href="/contact">
-          Contact Us
+          Request a consultation
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <nav class="menu-social" aria-label="Social">
@@ -917,7 +903,7 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title-h">
     <div class="panel-head">
       <div>
-        <p class="eyebrow"><i></i>Start your application</p>
+        <p class="eyebrow"><i></i>Request a consultation</p>
         <h2 class="h2" id="modal-title-h"><span id="modal-title">
           <span class="ln"><span class="li">Tell us about</span></span>
           <span class="ln"><span class="li">your trip</span></span>
@@ -939,18 +925,18 @@ if(l&&!l.classList.contains('exit')){l.style.display='none';document.documentEle
       </div>
       <div class="field">
         <label for="f-msg">Where are you going, and when?</label>
-        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October — family of three, first Schengen application…"></textarea>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Two weeks in Spain in October, family of three, first Schengen application…"></textarea>
       </div>
-      <button class="submit-btn" type="submit" id="modal-submit">Start my application</button>
+      <button class="submit-btn" type="submit" id="modal-submit">Send my enquiry</button>
       <p class="modal-alt">Prefer to talk it through? <a href="https://wa.me/447482788545" target="_blank" rel="noopener">WhatsApp us: +44 7482 788545</a></p>
-      <p class="modal-note">Sending opens your own email client, addressed to info@flypassholidays.co.uk, with these details filled in. We reply the same working day, Monday to Saturday — with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
-      <p class="modal-note enq-error" id="modal-error" hidden>Your browser could not open an email client. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <p class="modal-note">Sending goes straight to our enquiry inbox. We reply the same working day, Monday to Saturday, with a straight answer, not a sales pitch. Fees are agreed in writing before any work begins.</p>
+      <p class="modal-note enq-error" id="modal-error" hidden>Something went wrong sending your enquiry. Please email <a href="mailto:info@flypassholidays.co.uk">info@flypassholidays.co.uk</a> or <a href="https://wa.me/447482788545" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </form>
 
     <div class="success" id="modal-success" hidden>
       <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Request received</h3>
-      <p id="success-text">Thanks — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
+      <p id="success-text">Thanks. We reply the same working day, Monday to Saturday, and your case starts with a straight answer.</p>
       <button class="pill solid" type="button" id="modal-done">Done</button>
     </div>
   </div>

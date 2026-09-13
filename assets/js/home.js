@@ -209,12 +209,14 @@ function onView(el, fn) { if (REDUCED) { fn(); return; } ioMap.set(el, fn); io.o
 
 const gatedFns = [];
 function inview(el, { from, to, cfg, delay = 0, gated = false }) {
+  if (!el) return;
   const m = Motion.of(el);
   m.set(from);
   const go = () => setTimeout(() => m.to(to, cfg), delay);
   if (gated) gatedFns.push(go); else onView(el, go);
 }
 function bindHover(el, target, from, to, cfg) {
+  if (!el || !target) return;
   const m = Motion.of(target);
   m.set(from);
   el.addEventListener('pointerenter', () => { if (hoverOK()) m.to(to, cfg); });
@@ -222,33 +224,18 @@ function bindHover(el, target, from, to, cfg) {
 }
 
 /* =====================================================================
-   LOADER
+   PAGE REVEAL (loader screen removed — animations fire once the page loads)
    ===================================================================== */
-const loader = $('#loader');
-lockScroll();
-const lw = $('#loader .lw');
-Motion.of(lw).set({ opacity: 0, y: 16 });
-requestAnimationFrame(() => {
-  loader.classList.add('go');
-  Motion.of(lw).to({ opacity: 1, y: 0 }, { tension: 200, friction: 22 });
-});
-
 let revealed = false;
 function reveal() {
   if (revealed) return;
   revealed = true;
-  unlockScroll();
   heroReveal();
   gatedFns.forEach(f => f());
   startBgSlider();
-  loader.classList.add('exit');
-  setTimeout(() => loader.remove(), REDUCED ? 60 : 870);
 }
-const MIN_VISIBLE = REDUCED ? 200 : 1400;
-const MAX_VISIBLE = 2600;
-if (document.readyState === 'complete') setTimeout(reveal, MIN_VISIBLE);
-else addEventListener('load', () => setTimeout(reveal, MIN_VISIBLE));
-setTimeout(reveal, MAX_VISIBLE);
+if (document.readyState === 'complete') setTimeout(reveal, 0);
+else addEventListener('load', reveal);
 
 /* =====================================================================
    HERO
@@ -346,13 +333,12 @@ inview($('#enquiry'),  { from: { opacity: 0, y: 28 }, to: { opacity: 1, y: 0 }, 
    Both forms used to fake a success message and send nothing. They now
    actually deliver.
 
-   With no backend, delivery is a mailto: handoff — the same approach the rest
-   of the practice's contact points already use, and the form says so before you
-   press the button. To move to a real endpoint later, set ENQUIRY_ENDPOINT to a
-   URL that accepts a JSON POST; everything else here already handles it, and
-   the disclosure line swaps itself.
+   ENQUIRY_ENDPOINT posts to the Apps Script Web App that is the live
+   inbox pipeline — do not repoint it without confirming a real test
+   enquiry still lands. Falls back to a mailto: handoff only if the
+   endpoint is ever unset; the disclosure line swaps itself accordingly.
    ===================================================================== */
-const ENQUIRY_ENDPOINT = null;          // e.g. 'https://formspree.io/f/xxxxxxx'
+const ENQUIRY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwAzSszdieemimCkcpMQuL1GX29bYKB_PzkTJg5wKxRo-g3fOlzLdtZ3-TJ0W-qCPYvug/exec';
 const ENQUIRY_MAILBOX  = 'info@flypassholidays.co.uk';
 
 function enquiryBody(fields) {
@@ -368,8 +354,7 @@ async function deliverEnquiry(subject, fields) {
     try {
       const r = await fetch(ENQUIRY_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ subject, ...fields })
+        body: new URLSearchParams(fields)
       });
       return r.ok ? 'sent' : 'failed';
     } catch (err) {
@@ -387,6 +372,27 @@ async function deliverEnquiry(subject, fields) {
   }
 }
 
+/* =====================================================================
+   GOOGLE ADS / GA4 CONVERSION EVENTS
+   gtag() is loaded in <head>; this file only fires events on it.
+   ===================================================================== */
+const CONVERSIONS = {
+  whatsapp: 'AW-17835680281/Xb-ZCJrZkdgbEJnE27hC',
+  phone:    'AW-17835680281/EHoxCLPopNgbEJnE27hC',
+  email:    'AW-17835680281/d0aqCLbopNgbEJnE27hC',
+  form:     'AW-17835680281/SNl0CPal-9ocEJnE27hC'
+};
+function fireConversion(key) {
+  if (typeof gtag === 'function') gtag('event', 'conversion', { send_to: CONVERSIONS[key] });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"]');
+  if (!a) return;
+  if (a.href.startsWith('tel:')) fireConversion('phone');
+  else if (a.href.startsWith('mailto:')) fireConversion('email');
+  else fireConversion('whatsapp');
+});
+
 const eForm = $('#enquiry-form'), eSuccess = $('#enq-success'), eSubmit = $('#enq-submit');
 eForm.addEventListener('submit', async e => {
   e.preventDefault();
@@ -395,12 +401,13 @@ eForm.addEventListener('submit', async e => {
   eSubmit.textContent = ENQUIRY_ENDPOINT ? 'Sending…' : 'Opening your email…';
   const first = ($('#e-name').value.trim().split(/\s+/)[0]) || 'there';
   const result = await deliverEnquiry('Schengen visa enquiry — ' + ($('#e-name').value.trim() || 'website'), {
-    'Full name':   $('#e-name').value,
-    'Email':       $('#e-email').value,
-    'Phone':       $('#e-phone').value,
-    'Nationality': $('#e-nat').value,
-    'Destination': $('#e-dest').value,
-    'Description': $('#e-desc').value
+    name:        $('#e-name').value,
+    email:       $('#e-email').value,
+    phone:       $('#e-phone').value,
+    whatsapp:    $('#e-phone').value,
+    nationality: $('#e-nat').value,
+    destination: $('#e-dest').value,
+    notes:       $('#e-desc').value
   });
   if (result === 'failed') {
     eSubmit.disabled = false;
@@ -408,6 +415,7 @@ eForm.addEventListener('submit', async e => {
     $('#enq-error').hidden = false;
     return;
   }
+  if (result === 'sent') fireConversion('form');
   $('#enq-success-text').textContent = result === 'sent'
     ? `Thanks, ${first} — we reply the same working day, Monday to Saturday, with a straight answer.`
     : `Your email client should now be open, ${first}, with your details filled in. Press send there and we reply the same working day, Monday to Saturday.`;
@@ -549,7 +557,6 @@ const trustDots = makeDots($('#trust-dots'), TRUST.length, i => setTrust(i));
 trustDots.set(0);
 $('#trust-prev').addEventListener('click', () => setTrust(ti - 1));
 $('#trust-next').addEventListener('click', () => setTrust(ti + 1));
-onView(trustSection, () => setTrust(0, { initial: true }));
 
 /* Trust in-view reveals */
 inview($('#badge-circle'), { from: { opacity: 0, scale: 0.9 },        to: { opacity: 1, scale: 1 },        cfg: { tension: 220, friction: 22 } });
@@ -580,43 +587,39 @@ $$('.whyc-points li').forEach((li, i) => {
 inview($('.whyc-intro'), { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 }, cfg: { tension: 200, friction: 24 }, delay: 150 });
 inview($('#whyc-cta'),   { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 }, cfg: { tension: 200, friction: 24 }, delay: 250 });
 inview($('#whyc-img'),   { from: { opacity: 0, y: 40, scale: 0.97 }, to: { opacity: 1, y: 0, scale: 1 }, cfg: { tension: 180, friction: 26 }, delay: 150 });
-inview($('#services-intro'), { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 }, cfg: { tension: 200, friction: 24 }, delay: 200 });
-inview($('#services-cta'),   { from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 }, cfg: { tension: 200, friction: 24 }, delay: 150 });
 
 /* Who-we-are image height = 1.2 × content height on desktop */
 function sizeWhoImage() {
   const fig = $('#who-img'), content = $('.who-content');
   if (!fig || !content) return;
-  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeWhoImage();
 addEventListener('resize', sizeWhoImage);
 addEventListener('load', sizeWhoImage);
 
-/* Why-choose image height = 1.2 x content height on desktop */
+/* Why-choose image height = 1.15 x content height on desktop */
 function sizeWhyImage() {
   const fig = $('#whyc-img'), content = $('.whyc-content');
   if (!fig || !content) return;
-  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 768) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeWhyImage();
 addEventListener('resize', sizeWhyImage);
 addEventListener('load', sizeWhyImage);
 
-/* Service rows */
-$$('.svc-card').forEach((card, i) => {
-  inview(card, { from: { opacity: 0, y: 34 }, to: { opacity: 1, y: 0 }, cfg: { tension: 185, friction: 26 }, delay: (i % 3) * 120 });
-  bindHover(card, card, { scale: 1 }, { scale: 1.03 }, { tension: 300, friction: 22 });
-});
-
 /* Process — sticky step stack: cards 2 & 3 slide up, then the note + CTA appear */
 const stepCards = $$('.step-card');
 const processWrap = $('#process-wrap');
 const processFoot = $('.process-foot');
 const stepsPinned = innerWidth >= 1024 && !REDUCED;
-if (stepCards.length) {
+/* processWrap gates this: it's the homepage/about-us pinned-scroll wrapper.
+   Other pages reuse the plain .step-card visual style without that wrapper,
+   so without this guard stepCards.length alone would wrongly trigger the
+   pin logic and crash on the missing processFoot. */
+if (stepCards.length && processWrap) {
   if (stepsPinned) {
     stepCards[1].style.transform = 'translate3d(0, 100vh, 0)';
     stepCards[2].style.transform = 'translate3d(0, 100vh, 0)';
@@ -627,6 +630,11 @@ if (stepCards.length) {
     });
     inview(processFoot, { from: { opacity: 0, y: 24 }, to: { opacity: 1, y: 0 }, cfg: { tension: 190, friction: 26 }, delay: 200 });
   }
+} else if (stepCards.length) {
+  /* No pinned wrapper on this page — plain stacked reveal, same as about-us.js. */
+  stepCards.forEach((card, i) => {
+    inview(card, { from: { opacity: 0, y: 40 }, to: { opacity: 1, y: 0 }, cfg: { tension: 180, friction: 26 }, delay: i * 120 });
+  });
 }
 function centerProcessSticky() {
   const st = $('.process-sticky');
@@ -831,7 +839,7 @@ function resetForm() {
   mForm.hidden = false;
   mSuccess.hidden = true;
   mSubmit.disabled = false;
-  mSubmit.textContent = 'Start my application';
+  mSubmit.textContent = 'Send my enquiry';
 }
 mForm.addEventListener('submit', async e => {
   e.preventDefault();
@@ -839,16 +847,21 @@ mForm.addEventListener('submit', async e => {
   mSubmit.textContent = ENQUIRY_ENDPOINT ? 'Sending…' : 'Opening your email…';
   const first = ($('#f-name').value.trim().split(/\s+/)[0]) || 'there';
   const result = await deliverEnquiry('Schengen visa enquiry — ' + ($('#f-name').value.trim() || 'website'), {
-    'Full name': $('#f-name').value,
-    'Email':     $('#f-email').value,
-    'Trip':      $('#f-msg').value
+    name:        $('#f-name').value,
+    email:       $('#f-email').value,
+    phone:       '',
+    whatsapp:    '',
+    nationality: '',
+    destination: '',
+    notes:       $('#f-msg').value
   });
   if (result === 'failed') {
     mSubmit.disabled = false;
-    mSubmit.textContent = 'Start my application';
+    mSubmit.textContent = 'Send my enquiry';
     $('#modal-error').hidden = false;
     return;
   }
+  if (result === 'sent') fireConversion('form');
   $('#success-text').textContent = result === 'sent'
     ? `Thanks, ${first} — we reply the same working day, Monday to Saturday, and your case starts with a straight answer.`
     : `Your email client should now be open, ${first}, with your details filled in. Press send there and we reply the same working day, Monday to Saturday.`;
@@ -911,12 +924,18 @@ $$('[data-focus-form]').forEach(btn => btn.addEventListener('click', () => {
 
 /* TRUST-AUTOPLAY: the destinations carousel previously only moved on arrow/dot
    input. It now advances on its own every 6s once in view, pauses while the
-   pointer is over it or the tab is hidden, and manual input restarts the clock. */
+   pointer is over it or the tab is hidden, and manual input restarts the clock.
+
+   The initial reveal used to be registered here via a second onView() call on
+   trustSection — ioMap is keyed by element, so that second registration
+   silently overwrote the first (the one that actually fired setTrust(0, ...)
+   and revealed the ghost words). The section looked frozen until the 6s timer
+   happened to fire. Both now run from the one registration below. */
 if (trustSection) { /* autoplays regardless of the OS reduce-motion setting, per the owner */
   let trustTimer = null;
   const startTrust = () => { if (!trustTimer) trustTimer = setInterval(() => setTrust(ti + 1), 6000); };
   const stopTrust = () => { clearInterval(trustTimer); trustTimer = null; };
-  onView(trustSection, startTrust);
+  onView(trustSection, () => { setTrust(0, { initial: true }); startTrust(); });
   trustSection.addEventListener('mouseenter', stopTrust);
   trustSection.addEventListener('mouseleave', startTrust);
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopTrust(); else startTrust(); });
@@ -926,18 +945,18 @@ if (trustSection) { /* autoplays regardless of the OS reduce-motion setting, per
   });
 }
 
-/* Definition-section image height = 1.2 x content height on desktop (site-wide ratio rule). */
+/* Definition-section image height = 1.15 x content height on desktop (site-wide ratio rule). */
 function sizeDefImage() {
   const fig = $('#def-img'), content = $('.def-content');
   if (!fig || !content) return;
-  if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeDefImage();
 addEventListener('resize', sizeDefImage);
 addEventListener('load', sizeDefImage);
 
-/* RATIO-SETTLE: re-run the 1.2x image sizers after fonts and late reflows settle,
+/* RATIO-SETTLE: re-run the 1.15x image sizers after fonts and late reflows settle,
    so the ratio holds exactly rather than freezing at the load-time content height. */
 (function () {
   const all = () => { sizeSafeImage(); sizeWhoImage(); sizeWhyImage(); sizeDefImage(); };
@@ -945,11 +964,11 @@ addEventListener('load', sizeDefImage);
   setTimeout(all, 1200); setTimeout(all, 3000);
 })();
 
-/* Trust-section image height = 1.2 x content height on desktop (site-wide ratio rule). */
+/* Trust-section image height = 1.15 x content height on desktop (site-wide ratio rule). */
 function sizeSafeImage() {
   const fig = $('#safe-img'), content = $('.safe-content');
   if (!fig || !content) return;
-  if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.2) + 'px';
+  if (innerWidth >= 1024) fig.style.height = Math.round(content.offsetHeight * 1.15) + 'px';
   else fig.style.removeProperty('height');
 }
 sizeSafeImage();
