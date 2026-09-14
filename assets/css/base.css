@@ -412,6 +412,11 @@ main:focus,section:focus{outline:none}
 .process{position:relative;margin-top:.75rem}
 .process-wrap{position:relative}
 @media (min-width:1024px){.process-wrap{height:220vh}}
+/* 4-card variant (3 sliding cards instead of 2, as on process.html's stage
+   six and the destination pages' "how it works" sections) needs more scroll
+   room for the same per-card pacing. Class selector, so it must come after
+   the shared rule above to win on source order. */
+@media (min-width:1024px){.process-wrap--4{height:300vh}}
 .process-sticky{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-card-lg);background:var(--brand-deep);color:#fff;padding:3rem 1.5rem;display:flex;flex-direction:column;gap:2rem}
 @media (min-width:640px){.process-sticky{padding:4.25rem 2.5rem}}
 @media (min-width:1024px){.process-sticky{position:sticky;top:.75rem}}
