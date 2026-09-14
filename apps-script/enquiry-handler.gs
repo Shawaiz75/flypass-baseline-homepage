@@ -23,7 +23,12 @@ var MAX_PER_10MIN = 20;     // flood guard
 
 function doPost(e) {
   try {
-    var d = JSON.parse(e.postData.contents);
+    // The website posts application/x-www-form-urlencoded (URLSearchParams),
+    // not JSON — deliberately, to avoid a CORS preflight the default web app
+    // handler can't answer. Apps Script parses that body into e.parameter
+    // automatically; JSON.parse(e.postData.contents) here would throw on
+    // every real submission.
+    var d = e.parameter;
 
     var reason = spamReason(d);
     if (reason) {
