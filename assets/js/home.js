@@ -11,6 +11,11 @@ const hoverOK = () => innerWidth > 768 && matchMedia('(hover: hover)').matches;
 
 history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
+/* A back-forward-cache restore (common on mobile swipe-back, and on some
+   "reload" gestures) re-shows the frozen page without re-running this
+   module, so the reset above never fires for it. pageshow with
+   event.persisted does fire in that case. */
+addEventListener('pageshow', e => { if (e.persisted) window.scrollTo(0, 0); });
 
 /* ---------- Adaptive rem scale-up (viewports wider than 1920) ---------- */
 const FONT_BASE = 16, BASE_W = 1920, COEF = 0.6666;
