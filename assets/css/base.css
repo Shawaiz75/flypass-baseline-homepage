@@ -867,7 +867,7 @@ main:focus,section:focus{outline:none}
 /* Cards nested in an advsplit's (narrower) body column read as a sequential
    list, not a grid — stack them in one column regardless of viewport width,
    since the column itself, not the viewport, is what's narrow here. */
-.advsplit-body .advcards{grid-template-columns:1fr!important}
+.advsplit-body .advcards,.advmedia-content .advcards{grid-template-columns:1fr!important}
 /* A cta-row that follows .advmedia as a sibling spans the full row, so it
    visually sits under the image column as much as the text. Moving it inside
    .advmedia-content keeps it under the text only. */
